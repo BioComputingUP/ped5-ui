@@ -8,6 +8,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class DepositionComponent implements OnInit {
 
+  public activeSection = 'overview';
+
   constructor(private titleService: Title) {
     this.titleService.setTitle("Deposition - PED");
   }
@@ -15,9 +17,12 @@ export class DepositionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public scroll(el: HTMLElement) {
+  public scroll(el: HTMLElement, section?: string): void {
+    if (section) {
+      this.activeSection = section;
+    }
     const y = el.getBoundingClientRect().top + window.scrollY - 75;
-    window.scrollTo({ top: y, behavior: "smooth" })
+    window.scrollTo({ top: y, behavior: "smooth" });
   }
 
 }

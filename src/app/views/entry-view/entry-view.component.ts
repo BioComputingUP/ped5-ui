@@ -15,6 +15,7 @@ export class EntryViewComponent implements OnInit {
   public entryID;
   public entryData;
   public downloadAllLink;
+  public activeSection = 'overview';
 
   constructor(private titleService: Title,
               private internalService: InternalService,
@@ -31,6 +32,30 @@ export class EntryViewComponent implements OnInit {
       this.createBioschemas(data);
       Block.remove('#result-view');
     }, this.internalService.basicErrorHandler);
+  }
+
+  scroll(el: HTMLElement, section?: string): void {
+    if (section) {
+      this.activeSection = section;
+    }
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  getProteinACCs(constructChains) {
+    let proteins = new Set();
+    if (!constructChains) {
+      return proteins;
+    }
+    for (let i = 0; i < constructChains.length; i++) {
+      const chain = constructChains[i];
+      if (chain && chain["fragments"]) {
+        for (let j = 0; j < chain["fragments"].length; j++) {
+          const fragment = chain["fragments"][j];
+          if (fragment['uniprot_acc']) proteins.add(fragment['uniprot_acc']);
+        }
+      }
+    }
+    return proteins;
   }
 
 

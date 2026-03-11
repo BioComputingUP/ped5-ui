@@ -3,9 +3,11 @@
     <div class="modal fade" [attr.id]=" 'downloadModal_' + ensembleData['ensemble_id'] " tabindex="-1"
         aria-labelledby="downloadModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content modal-modern">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="downloadModalLabel">Ensemble {{ensembleData['ensemble_id']}} assets</h5>
+                    <h5 class="modal-title" id="downloadModalLabel">
+                        <i class="bi bi-download me-2"></i>Ensemble {{ensembleData['ensemble_id']}} Assets
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -19,54 +21,93 @@
 </ng-container>
 
 <!-- Main Content -->
-<div class="mx-2">
-    <div class="row mb-2 align-items-center">
-        <div class="col-auto">
-            <strong>Ensemble ID</strong> {{ensembleData['ensemble_id']}}
-        </div>
-        <div class="col-auto">
-            <strong class="pl-5 me-2">Number of models </strong> {{ensembleData['models']}} <span class="text-warning"
-                placement="right" *ngIf="(ensembleData['models']) > 1000"
-                tooltip="This is a big ensemble (>1000 conformers). Molprobity analysis not available."> <strong><i
-                        class="bi bi-exclamation-circle-fill"></i></strong></span>
-        </div>
-        <div class="col-auto">
-            <span *ngFor="let currChain of chainNames" class="badge bg-secondary me-1"
-                [class.bg-primary]="currChain === currChainName.value"
-                [class.bg-hover]="currChain !== currChainName.value" (click)="currChainName.next(currChain)">
-                Chain: {{currChain}}
-            </span>
-        </div>
-        <div class="col" style="text-align:right;">
-            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                [attr.data-bs-target]=" '#downloadModal_' + ensembleData['ensemble_id'] ">
-                Download Assets
-            </button>
-        </div>
-
-    </div>
-    <div class="row mb-2 align-items-center">
-        <div class="col-md"><span>
-                <strong>Secondary structure entropy </strong>
-                {{currStatData['entropy_dssp_mean'] | number:'1.2-2'}}</span></div>
-        <div class="col-md"><span>
-                <strong>Relative solvent accessibility </strong>
-                {{currStatData['relative_asa_mean'] | number:'1.2-2'}} </span></div>
-        <div class="col-md"><span>
-                <strong>Radius of gyration </strong>
-                {{currStatData['rg_mean'] | number:'1.2-2'}} </span></div>
-        <div class="col-lg-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <div id="molstar{{ensembleData['ensemble_id']}}" style="overflow: hidden">
+<div class="ensemble-card">
+    <!-- Ensemble Header -->
+    <div class="ensemble-header">
+        <div class="ensemble-info-row">
+            <div class="ensemble-id-badge">
+                <i class="bi bi-layers me-2"></i>{{ensembleData['ensemble_id']}}
+            </div>
+            <div class="ensemble-models">
+                <i class="bi bi-diagram-3 me-1"></i>
+                <span class="models-count">{{ensembleData['models']}}</span>
+                <span class="models-label">models</span>
+                <span class="warning-badge" *ngIf="(ensembleData['models']) > 1000"
+                    tooltip="This is a big ensemble (>1000 conformers). Molprobity analysis not available."
+                    placement="right">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                </span>
+            </div>
+            <div class="chain-selector">
+                <span *ngFor="let currChain of chainNames" class="chain-badge"
+                    [class.active]="currChain === currChainName.value"
+                    (click)="currChainName.next(currChain)">
+                    Chain {{currChain}}
+                </span>
             </div>
         </div>
-        <div class="col-lg-4" *ngIf="(ensembleData['models']) <= 1000 && !(ensembleData['only_CA'])">
-            <img src="{{currLinks.ramachandran_plot}}" width="100%">
+        <button type="button" class="btn-download-assets" data-bs-toggle="modal"
+            [attr.data-bs-target]=" '#downloadModal_' + ensembleData['ensemble_id'] ">
+            <i class="bi bi-download me-2"></i>Download Assets
+        </button>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="ensemble-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="bi bi-bar-chart"></i>
+            </div>
+            <div class="stat-content">
+                <span class="stat-value">{{currStatData['entropy_dssp_mean'] | number:'1.2-2'}}</span>
+                <span class="stat-label">Secondary Structure Entropy</span>
+            </div>
         </div>
-        <div class="col-lg-4" *ngIf="!(ensembleData['only_CA'])">
-            <img src="{{currLinks.rg_boxplot}}" width="100%">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="bi bi-droplet"></i>
+            </div>
+            <div class="stat-content">
+                <span class="stat-value">{{currStatData['relative_asa_mean'] | number:'1.2-2'}}</span>
+                <span class="stat-label">Relative Solvent Accessibility</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="bi bi-bullseye"></i>
+            </div>
+            <div class="stat-content">
+                <span class="stat-value">{{currStatData['rg_mean'] | number:'1.2-2'}}</span>
+                <span class="stat-label">Radius of Gyration</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualizations Row -->
+    <div class="ensemble-visualizations">
+        <div class="viz-card">
+            <div class="viz-header">
+                <i class="bi bi-box me-2"></i>3D Structure
+            </div>
+            <div class="viz-content">
+                <div id="molstar{{ensembleData['ensemble_id']}}" class="molstar-viewer"></div>
+            </div>
+        </div>
+        <div class="viz-card" *ngIf="(ensembleData['models']) <= 1000 && !(ensembleData['only_CA'])">
+            <div class="viz-header">
+                <i class="bi bi-graph-up me-2"></i>Ramachandran Plot
+            </div>
+            <div class="viz-content">
+                <img src="{{currLinks.ramachandran_plot}}" alt="Ramachandran Plot" class="viz-image">
+            </div>
+        </div>
+        <div class="viz-card" *ngIf="!(ensembleData['only_CA'])">
+            <div class="viz-header">
+                <i class="bi bi-bar-chart-line me-2"></i>Radius of Gyration
+            </div>
+            <div class="viz-content">
+                <img src="{{currLinks.rg_boxplot}}" alt="Radius of Gyration Boxplot" class="viz-image">
+            </div>
         </div>
     </div>
 </div>

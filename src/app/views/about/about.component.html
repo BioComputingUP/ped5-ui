@@ -1,70 +1,110 @@
 <!-- Main container -->
 <div class="container-xl">
-    <div class="row">
+    <!-- Header Section -->
+    <div class="about-header mb-5" id="overview">
+        <h1>
+            <i class="bi bi-info-circle-fill me-2"></i>About PED
+        </h1>
+        <p class="about-subtitle">Protein Ensemble Database - Community Resource for Structural Ensembles</p>
+    </div>
+
+    <div class="row ">
+        <!-- Sidebar Navigation -->
         <div class="col-lg-3">
-            <div class="sticky-top" style="top: 90px;">
-                <h6>
-                    <p (click)="scroll(top)" style="cursor: pointer;">About</p>
+            <div class="about-sidebar">
+                <h6 class="sidebar-title">
+                    <i class="bi bi-list-nested me-2"></i>Navigation
                 </h6>
-                <ul>
-                    <li (click)="scroll(cite)" style="cursor: pointer;">
-                        <p>How to cite</p>
-                    </li>
-                    <li (click)="scroll(intro)" style="cursor: pointer;">
-                        <p>Introduction to the PED</p>
-                    </li>
+                <nav class="about-nav">
                     <ul>
-                        <li (click)="scroll(ensemble)" style="cursor: pointer;">
-                            <p>What is an ensemble?</p>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'overview'" (click)="scrollTo('overview', $event)">
+                                <i class="bi bi-house-door me-2"></i>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'cite'" (click)="scrollTo('cite', $event)">
+                                <i class="bi bi-quote me-2"></i>
+                                <span>How to cite</span>
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'intro'" (click)="scrollTo('intro', $event)">
+                                <i class="bi bi-book me-2"></i>
+                                <span>Introduction to the PED</span>
+                            </a>
+                        </li>
+                        <ul class="nav-submenu">
+                            <li>
+                                <a href="javascript:void(0)" class="nav-link-sub" [class.active]="activeSection === 'ensemble'" (click)="scrollTo('ensemble', $event)">
+                                    <i class="bi bi-diagram-3 me-2"></i>
+                                    <span>What is an ensemble?</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'process'" (click)="scrollTo('process', $event)">
+                                <i class="bi bi-cloud-upload me-2"></i>
+                                <span>Deposition Process</span>
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'cv'" (click)="scrollTo('cv', $event)">
+                                <i class="bi bi-tags me-2"></i>
+                                <span>Controlled Vocabulary</span>
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'license'" (click)="scrollTo('license', $event)">
+                                <i class="bi bi-file-earmark-text me-2"></i>
+                                <span>License</span>
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'privacy'" (click)="scrollTo('privacy', $event)">
+                                <i class="bi bi-shield-lock me-2"></i>
+                                <span>Privacy notice</span>
+                            </a>
                         </li>
                     </ul>
-                    <li (click)="scroll(process)" style="cursor: pointer;">
-                        <p>Deposition Process</p>
-                    </li>
-                    <li (click)="scroll(cv)" style="cursor: pointer;">
-                        <p>Controlled Vocabulary</p>
-                    </li>
-                    <li (click)="scroll(license)" style="cursor: pointer;">
-                        <p>License</p>
-                    </li>
-                    <li (click)="scroll(privacy)" style="cursor: pointer;">
-                        <p>Privacy notice</p>
-                    </li>
-                </ul>
+                </nav>
             </div>
         </div>
+
+        <!-- Main Content -->
         <div class="col-lg-9">
-            <h1 #top>About PED</h1>
 
-            <!-- How to cite -->
-            <div class="row" #cite>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">How to cite: </h2>
-                    <p>If you use PED, please cite the following reference:</p>
-
-                    <p class="mb-1 py-0" style="  text-align: left;">
-
-                        <strong>PED in 2024: improving the community deposition of structural ensembles for intrinsically disordered proteins</strong><br>
-                    </p>
-                    <p class="mb-1 py-0" style="font-size: small;line-height: 110%; text-align: justify">Hamidreza Ghafouri, Tamas Lazar, Alessio Del Conte, Luiggi G Tenorio Ku, PED Consortium , Peter Tompa, Silvio C E Tosatto, Alexander Miguel Monzon</p>
-                    <p class="mb-2 py-0 mt-0" style="text-align: left;">
-                        (2024) <i>Nucleic Acids Research</i>, Database Issue,
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/37904608/"> <strong>PubMed</strong><i
-                                class="bi bi-link-45deg"></i>
-                        </a>,
-                        <a href="https://academic.oup.com/nar/article/52/D1/D536/7334090"> <strong>NAR</strong><i
-                                class="bi bi-link-45deg"></i>
-                        </a>
-                    </p>
-
+            <!-- How to cite Section -->
+            <section class="content-section" id="cite">
+                <div class="section-header">
+                    <h2><i class="bi bi-quote"></i> How to cite</h2>
                 </div>
-            </div>
+                <div class="section-content">
+                    <p>If you use PED, please cite the following reference:</p>
+                    <div class="citation-box">
+                        <p class="citation-title">PED in 2024: improving the community deposition of structural ensembles for intrinsically disordered proteins</p>
+                        <p class="citation-authors">Hamidreza Ghafouri, Tamas Lazar, Alessio Del Conte, Luiggi G Tenorio Ku, PED Consortium , Peter Tompa, Silvio C E Tosatto, Alexander Miguel Monzon</p>
+                        <p class="citation-journal">(2024) <i>Nucleic Acids Research</i>, Database Issue</p>
+                        <div class="citation-links">
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/37904608/">
+                                <i class="bi bi-link-45deg"></i> PubMed
+                            </a>
+                            <a href="https://academic.oup.com/nar/article/52/D1/D536/7334090">
+                                <i class="bi bi-link-45deg"></i> NAR
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <!-- Intro -->
-            <div class="row" #intro>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">Introduction to the PED</h2>
-                    <p class="text-justify">
+            <!-- Introduction Section -->
+            <section class="content-section" id="intro">
+                <div class="section-header">
+                    <h2><i class="bi bi-book"></i> Introduction to the PED</h2>
+                </div>
+                <div class="section-content">
+                    <p>
                         The structural characterization of intrinsically disordered proteins (IDPs) has obvious inherent
                         difficulties compared to proteins with more rigid structures. Structural information of a single
                         conformation is often insufficient to get an insight on the functions carried out by IDPs;
@@ -85,101 +125,102 @@
                         used as
                         benchmarking datasets to facilitate the development of new ensemble calculation methods.
                     </p>
-                    <p class="text-justify">
+                    <p>
                         It is possible to deposit new ensembles to PED. To do so, please read the information for data
                         owners
                         available from the deposition process section below.
                     </p>
-
                 </div>
-            </div>
+            </section>
 
-            <!--  What is an ensemble? -->
-            <div class="row" #ensemble>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">What is an ensemble?</h2>
-                    <h4>
-                        Introduction to structural ensembles
-                    </h4>
-                    <p class="text-justify">
-                        The shear number of conformers that coexist in solution for a flexible system precludes their
-                        description
-                        with X-ray crystallography. However, Nuclear Magnetic Resonance (NMR) and Small Angle X-ray
-                        Scattering
-                        (SAXS) experiments can provide geometric constraints that can be used in the selection of an
-                        ensemble of
-                        conformations that approximately describe the conformational dynamics of a flexible system in
-                        solution.
-                        There are two broad approaches to generating disordered state ensembles that fit experimental
-                        data. The
-                        first is called ensemble-restrained molecular dynamics (MD) where MD simulations are driven by a
-                        set of
-                        restraints so that a set of representative conformers for the data. The second is more recent
-                        and involves
-                        the pre-generation of random coil-like conformations and selecting subsets that fit the data.
-                        Although the
-                        latter approach is described in more detail here, PED is also hosting ensembles from MD
-                        simulations, both
-                        experimentally constrained, and unconstrained. However, experimental validation is always
-                        advised.
-                    </p>
-                    <h4>
-                        Generating the starting pool </h4>
-                    <p class="text-justify">
-                        The most common procedure of ensemble calculation starts with generating a vast starting pool of
-                        conformations. These conformations can be completely random coil-like or may already be
-                        constrained by
-                        experimental or theoretical data such as psi/phi angles, local or nonlocal contacts or secondary
-                        structure
-                        propensities. Some programs commonly used for this step are Flexible-Meccano (FM), RanCh and
-                        TRaDES. MD
-                        simulations may also be used to provide a starting pool. The conformers generated may need to be
-                        completed,
-                        for example FM conformers lack side-chains that need to be modeled in afterwards with software
-                        such as
-                        SCCOMP or SCRWL.
-                    </p>
-                    <h4>
-                        Back-calculated data
-                    </h4>
-                    <p class="text-justify">
-                        After generating the starting pool, a variety of data-types are back-calculated from the
-                        conformers in order
-                        to enable comparison with experimental data. For SAXS data, the software CRYSOL calculates
-                        scattering
-                        curves, averaging individual intensities for each conformer. For NMR data, FM can estimate
-                        Residual Dipolar
-                        Coupling values (RDCs), and Paramagnetic Relaxation Enhancement (PRE) and J-coupling values for
-                        the
-                        generated conformer pools. On the other hand, ENSEMBLE utilizes CRYSOL for SAXS data, HYDROPRO
-                        for
-                        NMR-derived Rh data, ShiftX for chemical shift data, a local-alignment approach for RDCs, and
-                        internal
-                        scripts for solvent accessibility, PREs, J-couplings, R2 relaxation rates and NOEs.
-                    </p>
-                    <h4>
-                        Fitting to the experimental data
-                    </h4>
-                    <p class="text-justify">
-                        The aim of the ensemble calculation is to select a subset of conformers whose back-calculated
-                        values fit the
-                        actual experimental data coming from the SAXS and NMR measurements. The software Gajoe, part of
-                        EOM, deals
-                        with the selection of the pool of conformers that fit the theoretical and experimental SAXS
-                        curves best. The
-                        program ASTEROIDS carries out a similar selection based on NMR parameters. ENSEMBLE similarly
-                        can select a
-                        subset of conformers on the basis of SAXS and a variety of different NMR data. The size of the
-                        final
-                        ensembles may range from only a few to hundreds of conformers; after a threshold, increasing the
-                        ensemble
-                        size may not improve the fit any further and the "final" ensembles are conformationally
-                        redundant.
-                    </p>
-                    <h4>
-                        Limitations and perspectives
-                    </h4>
-                    <p class="text-justify"><i>
+            <!-- What is an ensemble Section -->
+            <section class="content-section" id="ensemble">
+                <div class="section-header">
+                    <h2><i class="bi bi-diagram-3"></i> What is an ensemble?</h2>
+                </div>
+                <div class="section-content">
+                    <div class="subsection">
+                        <h4><i class="bi bi-info-circle"></i> Introduction to structural ensembles</h4>
+                        <p>
+                            The shear number of conformers that coexist in solution for a flexible system precludes their
+                            description
+                            with X-ray crystallography. However, Nuclear Magnetic Resonance (NMR) and Small Angle X-ray
+                            Scattering
+                            (SAXS) experiments can provide geometric constraints that can be used in the selection of an
+                            ensemble of
+                            conformations that approximately describe the conformational dynamics of a flexible system in
+                            solution.
+                            There are two broad approaches to generating disordered state ensembles that fit experimental
+                            data. The
+                            first is called ensemble-restrained molecular dynamics (MD) where MD simulations are driven by a
+                            set of
+                            restraints so that a set of representative conformers for the data. The second is more recent
+                            and involves
+                            the pre-generation of random coil-like conformations and selecting subsets that fit the data.
+                            Although the
+                            latter approach is described in more detail here, PED is also hosting ensembles from MD
+                            simulations, both
+                            experimentally constrained, and unconstrained. However, experimental validation is always
+                            advised.
+                        </p>
+                    </div>
+                    <div class="subsection">
+                        <h4><i class="bi bi-collection"></i> Generating the starting pool</h4>
+                        <p>
+                            The most common procedure of ensemble calculation starts with generating a vast starting pool of
+                            conformations. These conformations can be completely random coil-like or may already be
+                            constrained by
+                            experimental or theoretical data such as psi/phi angles, local or nonlocal contacts or secondary
+                            structure
+                            propensities. Some programs commonly used for this step are Flexible-Meccano (FM), RanCh and
+                            TRaDES. MD
+                            simulations may also be used to provide a starting pool. The conformers generated may need to be
+                            completed,
+                            for example FM conformers lack side-chains that need to be modeled in afterwards with software
+                            such as
+                            SCCOMP or SCRWL.
+                        </p>
+                    </div>
+                    <div class="subsection">
+                        <h4><i class="bi bi-calculator"></i> Back-calculated data</h4>
+                        <p>
+                            After generating the starting pool, a variety of data-types are back-calculated from the
+                            conformers in order
+                            to enable comparison with experimental data. For SAXS data, the software CRYSOL calculates
+                            scattering
+                            curves, averaging individual intensities for each conformer. For NMR data, FM can estimate
+                            Residual Dipolar
+                            Coupling values (RDCs), and Paramagnetic Relaxation Enhancement (PRE) and J-coupling values for
+                            the
+                            generated conformer pools. On the other hand, ENSEMBLE utilizes CRYSOL for SAXS data, HYDROPRO
+                            for
+                            NMR-derived Rh data, ShiftX for chemical shift data, a local-alignment approach for RDCs, and
+                            internal
+                            scripts for solvent accessibility, PREs, J-couplings, R2 relaxation rates and NOEs.
+                        </p>
+                    </div>
+                    <div class="subsection">
+                        <h4><i class="bi bi-graph-up-arrow"></i> Fitting to the experimental data</h4>
+                        <p>
+                            The aim of the ensemble calculation is to select a subset of conformers whose back-calculated
+                            values fit the
+                            actual experimental data coming from the SAXS and NMR measurements. The software Gajoe, part of
+                            EOM, deals
+                            with the selection of the pool of conformers that fit the theoretical and experimental SAXS
+                            curves best. The
+                            program ASTEROIDS carries out a similar selection based on NMR parameters. ENSEMBLE similarly
+                            can select a
+                            subset of conformers on the basis of SAXS and a variety of different NMR data. The size of the
+                            final
+                            ensembles may range from only a few to hundreds of conformers; after a threshold, increasing the
+                            ensemble
+                            size may not improve the fit any further and the "final" ensembles are conformationally
+                            redundant.
+                        </p>
+                    </div>
+                    <div class="subsection">
+                        <h4><i class="bi bi-exclamation-triangle"></i> Limitations and perspectives</h4>
+                        <p><i>
                             As the final structural ensembles are models, there are several caveats to accepting them as
                             true
                             representations of structural reality. First, the quality of the final ensemble depends
@@ -206,16 +247,18 @@
                             with all their
                             shortcomings, structural ensembles represent our current best approach for describing the
                             structure of IDPs.
-                        </i>
-                    </p>
+                        </i></p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Deposition Process -->
-            <div class="row" #process>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">Deposition process</h2>
-                    <p class="text-justify">
+            <!-- Deposition Process Section -->
+            <section class="content-section" id="process">
+                <div class="section-header">
+                    <h2><i class="bi bi-cloud-upload"></i> Deposition process</h2>
+                </div>
+                <div class="section-content">
+                    <p>
                         <strong>PED</strong> will add new entries as a part of periodic releases. In the period between
                         releases, new
                         entries can be deposited at any time. Candidate entries will be manually reviewed by our
@@ -230,25 +273,47 @@
                         review by biocurators and approval by the data owner.
                     </p>
                 </div>
-            </div>
+            </section>
 
-            <!-- Controlled Vocabulary -->
-            <div class="row" id="cv" #cv>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">Controlled Vocabulary</h2>
-                    <p class="text-justify">
+            <!-- Controlled Vocabulary Section -->
+            <section class="content-section" id="cv">
+                <div class="section-header">
+                    <h2><i class="bi bi-tags"></i> Controlled Vocabulary</h2>
+                </div>
+                <div class="section-content">
+                    <p>
                         In order to enhance the browsability of the database and to standardize the keywords describing
                         the
                         experimental methodology to determine the ensembles, a database specific controlled vocabulary
                         (CV) is under
-                        development. The three aspects of this CV are:</p>
+                        development. The three aspects of this CV are:
+                    </p>
 
-                    <ol>
-                        <li>Measurement method</li>
-                        <li>Ensemble generation method</li>
-                        <li>Molecular dynamics</li>
-                    </ol>
-                    <p class="text-justify">
+                    <ul class="cv-list">
+                        <li>
+                            <div class="list-icon"><i class="bi bi-speedometer2"></i></div>
+                            <div class="list-content">
+                                <strong>Measurement method</strong>
+                                <span>Various experimental techniques and parameters</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-icon"><i class="bi bi-gear"></i></div>
+                            <div class="list-content">
+                                <strong>Ensemble generation method</strong>
+                                <span>Software tools for modeling and assessment</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-icon"><i class="bi bi-activity"></i></div>
+                            <div class="list-content">
+                                <strong>Molecular dynamics</strong>
+                                <span>Simulations programs and force fields</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <p>
                         The aspect <i>Measurement method</i> is further divided into subclasses referring to the most
                         common
                         techniques.
@@ -270,176 +335,247 @@
                         well as short energy minimizations that represent two substantially different purposes.
 
                         A table summarizing the classification of CV terms is found below.
-
                     </p>
-
                 </div>
-            </div>
+            </section>
 
-            <!-- Explore tree -->
-            <h5 class="mb-2">Explore the controlled vocabulary</h5>
-            <div class="row">
-                <div class="col">
-                    <div class="input-group small-button">
-                        <div class="input-group-prepend small-button">
-                            <span class="input-group-text text-center small-button" style="min-width: 150px"
-                                id="basic-addon1">Filter</span>
+            <!-- Tree Explorer -->
+            <div class="tree-explorer">
+                <h5 class="explorer-title"><i class="bi bi-search"></i> Explore the controlled vocabulary</h5>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="bi bi-funnel me-2"></i> Filter
+                            </span>
+                            <input type="text" id="filter" #filter class="form-control" placeholder="Search terms..."
+                                [formControl]="ontologyFilterFrom" (keyup)="tree.treeModel.filterNodes(filter.value)">
+                            <button class="btn btn-primary"
+                                (click)="clearSearch(); tree.treeModel.clearFilter()">
+                                <i class="bi bi-x-lg me-1"></i> Clear
+                            </button>
                         </div>
-                        <input type="text" id="filter" #filter class="form-control small-button" placeholder=""
-                            [formControl]="ontologyFilterFrom" (keyup)="tree.treeModel.filterNodes(filter.value)">
+                    </div>
+                </div>
 
-                        <button class=" btn btn-primary small-button"
-                            (click)="clearSearch(); tree.treeModel.clearFilter()">
-                            clear
-                        </button>
+                <div class="row">
+                    <div class="col-auto">
+                        <tree-root #tree [nodes]="nodes" [options]="options">
+                            <ng-template #treeNodeWrapperTemplate let-node let-index="index">
+                                <div class="node-wrapper" [style.padding-left]="node.getNodePadding()">
+                                    <tree-node-expander [node]="node"></tree-node-expander>
+                                    <div class="my-1">
+                                        <span style="color: #2E8BA2"><strong>{{node.data.name}}</strong></span>
+                                        <span></span>
+                                        <ng-container *ngIf="node.data.def">
+                                            <br>
+                                            <span style="color: #6f7076; font-size: 14px"><i>{{node.data.def}}</i></span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </tree-root>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-auto">
-                    <tree-root #tree [nodes]="nodes" [options]="options">
-                        <ng-template #treeNodeWrapperTemplate let-node let-index="index">
-                            <div class="node-wrapper" [style.padding-left]="node.getNodePadding()">
-                                <tree-node-expander [node]="node"></tree-node-expander>
-                                <div class="my-1">
-                                    <span style="color: #2E8BA2"><strong>{{node.data.name}}</strong></span>
-                                    <span></span>
-                                    <ng-container *ngIf="node.data.def">
-                                        <br>
-                                        <span style="color: #6f7076; font-size: 14px"><i>{{node.data.def}}</i></span>
-                                    </ng-container>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </tree-root>
+            <!-- License Section -->
+            <section class="content-section" id="license">
+                <div class="section-header">
+                    <h2><i class="bi bi-file-earmark-text"></i> License</h2>
                 </div>
-            </div>
-
-            <!-- License -->
-            <div class="row" #license>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">License</h2>
-                    <div class="align-self-center">
+                <div class="section-content">
+                    <div class="license-box">
                         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
                             <img alt="Creative Commons License" style="border-width:0"
                                 src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
                         </a>
-                        This work is licensed under a
-                        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-                            Creative Commons Attribution 4.0 International License
-                        </a>.
-
+                        <p class="license-text">
+                            This work is licensed under a
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                                Creative Commons Attribution 4.0 International License
+                            </a>.
+                        </p>
                     </div>
-
                 </div>
-            </div>
+            </section>
 
-            <!-- Privacy -->
-            <h2 id="privacy" #privacy class="pt-3 pb-2">Privacy notice</h2>
-            <p class="text-justify">
-                This privacy notice explains what personal data is collected by PED, for what purposes, how it is
-                processed,
-                and how we keep it secure.
-            </p>
-            <h5 class="pt-2"><strong>Who controls your personal data and how to contact us?</strong></h5>
+            <!-- Privacy Section -->
+            <section class="content-section" id="privacy">
+                <div class="section-header">
+                    <h2><i class="bi bi-shield-lock"></i> Privacy notice</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        This privacy notice explains what personal data is collected by PED, for what purposes, how it is
+                        processed,
+                        and how we keep it secure.
+                    </p>
 
-            <div class="row">
-                <div class="col-6">
-                    <strong>Data controller</strong>'s contact details are:<br>
-                    Alexander M. Monzon<br>
-                    University of Padua, Department of Biomedical Sciences<br>
-                    Via U. Bassi, 58/B<br>
-                    35131 Padova, Italy<br>
-                    <i class="fa fa-envelope"></i> biocomp@bio.unipd.it
+                    <div class="privacy-faq">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="bi bi-person-badge"></i>
+                                <span>Who controls your personal data and how to contact us?</span>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="contact-cards">
+                                    <div class="contact-card">
+                                        <div class="contact-title">
+                                            <i class="bi bi-person-check"></i> Data controller
+                                        </div>
+                                        <div class="contact-info">
+                                            Alexander M. Monzon<br>
+                                            University of Padua, Department of Biomedical Sciences<br>
+                                            Via U. Bassi, 58/B<br>
+                                            35131 Padova, Italy
+                                            <div class="email">
+                                                <i class="bi bi-envelope"></i> biocomp@bio.unipd.it
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contact-card">
+                                        <div class="contact-title">
+                                            <i class="bi bi-shield-check"></i> Data protection officer
+                                        </div>
+                                        <div class="contact-info">
+                                            Data protection officer at the University of Padua<br>
+                                            University of Padua<br>
+                                            Via VIII Febbraio 2<br>
+                                            35122 Padova, Italy
+                                            <div class="email">
+                                                <i class="bi bi-envelope"></i> privacy@unipd.it
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="bi bi-file-earmark-check"></i>
+                                <span>What is our lawful basis for processing your personal data?</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    Processing your personal data is necessary for our legitimate interest of allowing the day-to-day
+                                    management,
+                                    operation and functioning of PED.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="bi bi-database"></i>
+                                <span>How will your personal data be used?</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We will use the personal data to:</p>
+                                <ul>
+                                    <li>provide user access to the service</li>
+                                    <li>create anonymous usage statistics</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="bi bi-people"></i>
+                                <span>Who will have access to your personal data?</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The personal data will be disclosed to authorized PED staff.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="bi bi-globe"></i>
+                                <span>Will your personal data be transferred to third countries (i.e. countries not part of EU/EAA) and/or international organisations?</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Personal data is transferred to the following service provider based in a third
+                                    country which PED relies on to provide the service:</p>
+                                <ul>
+                                    <li>Google Analytics</li>
+                                </ul>
+                                <p>There are no personal data transfers to international organisations.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="bi bi-clock-history"></i>
+                                <span>How long do we keep your personal data?</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Any personal data directly obtained from you will be retained as long as the service
+                                    is live, even if you
+                                    stop
+                                    using the service. We will keep the personal data for the minimum amount of time possible to ensure
+                                    legal
+                                    compliance and to facilitate internal and external audits if they arise. Access to the web and security
+                                    logs
+                                    containing personal data are restricted to relevant PED staff.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Your rights regarding your personal data</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You have the right to:</p>
+                                <ol type="1">
+                                    <li>
+                                        Not be subject to decisions based solely on an automated processing of data (i.e. without human
+                                        intervention) without you having your views taken into consideration.
+                                    </li>
+                                    <li>
+                                        Request at reasonable intervals and without excessive delay or expense, information about the
+                                        personal data
+                                        processed about you. Under your request we will inform you in writing about, for example, the origin
+                                        of the
+                                        personal data or the preservation period.
+                                    </li>
+                                    <li>
+                                        Request information to understand data processing activities when the results of these activities
+                                        are
+                                        applied to you.
+                                    </li>
+                                    <li>
+                                        Object at any time to the processing of your personal data unless we can demonstrate that we have
+                                        legitimate
+                                        reasons to process your personal data.
+                                    </li>
+                                    <li>
+                                        Request free of charge and without excessive delay rectification or erasure of your personal data.
+                                    </li>
+                                </ol>
+                                <p>
+                                    It must be clarified that rights 4 and 5 are only available whenever the processing of your personal
+                                    data is not
+                                    necessary to:
+                                </p>
+                                <ul>
+                                    <li>Comply with a legal obligation.</li>
+                                    <li>Perform a task carried out in the public interest.</li>
+                                    <li>Exercise authority as a data controller.</li>
+                                    <li>
+                                        Archive for purposes in the public interest, or for historical research purposes, or for statistical
+                                        purposes.
+                                    </li>
+                                    <li>Establish, exercise or defend legal claims.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <strong>Data protection officer</strong>'s contact details are:<br>
-                    Data protection officer at the University of Padua<br>
-                    University of Padua <br>
-                    Via VIII Febbraio 2 <br>
-                    35122 Padova, Italy <br>
-                    <i class="fa fa-envelope"></i> privacy@unipd.it
-                </div>
-            </div>
-            <h5 class="pt-2"><strong>What is our lawful basis for processing your personal data?</strong></h5>
-            <p class="text-justify">
-                Processing your personal data is necessary for our legitimate interest of allowing the day-to-day
-                management,
-                operation and functioning of PED.
-            </p>
-            <h5 class="pt-2"><strong>How will your personal data be used?</strong></h5>
-            <p class="text-justify">We will use the personal data to:</p>
-            <ul>
-                <li>provide user access to the service</li>
-                <li>create anonymous usage statistics</li>
-            </ul>
-            <h5 class="pt-2"><strong>Who will have access to your personal data?</strong></h5>
-            <p class="text-justify">The personal data will be disclosed to authorized PED staff.</p>
-            <h5 class="pt-2"><strong>Will your personal data be transferred to third countries (i.e. countries not part
-                    of
-                    EU/EAA) and/or
-                    international organisations?</strong></h5>
-            <p class="text-justify">Personal data is transferred to the following service provider based in a third
-                country which PED relies
-                on to provide the service:</p>
-            <ul>
-                <li>Google Analytics</li>
-            </ul>
-            <p class="text-justify">There are no personal data transfers to international organisations.</p>
-            <h5 class="pt-2"><strong>How long do we keep your personal data?</strong></h5>
-            <p class="text-justify">Any personal data directly obtained from you will be retained as long as the service
-                is live, even if you
-                stop
-                using the service. We will keep the personal data for the minimum amount of time possible to ensure
-                legal
-                compliance and to facilitate internal and external audits if they arise. Access to the web and security
-                logs
-                containing personal data are restricted to relevant PED staff.
-            </p>
-            <h5 class="pt-2"><strong>Your rights regarding your personal data</strong></h5>
-            <p class="text-justify">You have the right to:</p>
-            <ol type="1">
-                <li>
-                    Not be subject to decisions based solely on an automated processing of data (i.e. without human
-                    intervention) without you having your views taken into consideration.
-                </li>
-                <li>
-                    Request at reasonable intervals and without excessive delay or expense, information about the
-                    personal data
-                    processed about you. Under your request we will inform you in writing about, for example, the origin
-                    of the
-                    personal data or the preservation period.
-                </li>
-                <li>
-                    Request information to understand data processing activities when the results of these activities
-                    are
-                    applied to you.
-                </li>
-                <li>
-                    Object at any time to the processing of your personal data unless we can demonstrate that we have
-                    legitimate
-                    reasons to process your personal data.
-                </li>
-                <li>
-                    Request free of charge and without excessive delay rectification or erasure of your personal data.
-                </li>
-            </ol>
-            <p class="text-justify">
-                It must be clarified that rights 4 and 5 are only available whenever the processing of your personal
-                data is not
-                necessary to:
-            </p>
-            <ul>
-                <li>Comply with a legal obligation.</li>
-                <li>Perform a task carried out in the public interest.</li>
-                <li>Exercise authority as a data controller.</li>
-                <li>
-                    Archive for purposes in the public interest, or for historical research purposes, or for statistical
-                    purposes.
-                </li>
-                <li>Establish, exercise or defend legal claims.</li>
-            </ul>
+            </section>
         </div>
     </div>
 </div>

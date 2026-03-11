@@ -16,6 +16,7 @@ export class UniprotProteinViewComponent implements OnInit {
   public disprotGeneralData;
   public entriesData = [];
   public entriesLoading = true;
+  public activeSection = 'summary';
 
   constructor(private externalService: ExternalService, private titleService: Title, private internalService: InternalService,
     private route: ActivatedRoute) {
@@ -25,8 +26,8 @@ export class UniprotProteinViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    Block.standard("#uniprot-summary")
-    Block.standard("#protein-entries")
+    Block.standard("#summary")
+    Block.standard("#entries")
 
 
     // Get Uniprot data
@@ -56,7 +57,7 @@ export class UniprotProteinViewComponent implements OnInit {
         }
       }
       this.proteinData = protein_data;
-      Block.remove("#uniprot-summary")
+      Block.remove("#summary")
     });
 
 
@@ -76,8 +77,15 @@ export class UniprotProteinViewComponent implements OnInit {
     this.internalService.searchEntries({ limit: 1000, uniprot_acc: this.uniprotACC}).subscribe( pedData => {
       this.entriesData = pedData['result'];
       this.entriesLoading = false;
-      Block.remove("#protein-entries")
+      Block.remove("#entries")
     });
+  }
+
+  public scroll(el: HTMLElement, section?: string): void {
+    if (section) {
+      this.activeSection = section;
+    }
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
 }

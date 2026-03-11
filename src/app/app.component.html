@@ -1,11 +1,7 @@
-<div class="d-flex flex-column h-100">
-  <div class="container-fluid">
-    <app-navbar></app-navbar>
-  </div>
-  <div class="container-fluid flex-grow header-offset px-0">
-    <router-outlet></router-outlet>
-  </div>
-  <div class="container-fluid px-0 footer">
-    <app-footer></app-footer>
-  </div>
-</div>
+<app-navbar></app-navbar>
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+<footer class="site-footer">
+  <app-footer></app-footer>
+</footer>

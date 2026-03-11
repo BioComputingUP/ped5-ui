@@ -1,45 +1,97 @@
-<div class="container-xl">
-  <div class="row">
-    <div class="col-md pt-2 pb-2">
-      <div class="row align-items-center">
-        <!--        <div class="col-auto">-->
-        <!--          <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="">-->
-        <!--            <img class="img-logo" src="assets/img/logos/biocompup_logo.jpg" alt="BioComputing UP logo">-->
-        <!--          </a>-->
-        <!--        </div>-->
-        <div class="col footer-text pl-0">
-          <small>University of Padova, Italy
-            <br>
-            <a routerLinkActive="active" routerLink="about" title="About">
-              License and disclaimer
-            </a>
-          </small>
+<footer class="site-footer text-light pt-4 pb-3">
+    <div class="container-xl">
+        <div class="row g-4">
+            <!-- Information -->
+            <div class="col-lg-5">
+                <span class="footer-heading">
+                    <i class="bi bi-building me-1"></i> Information
+                </span>
+                <div class="row mb-3">
+                    <div class="col-sm-6 mb-2 mb-sm-0">
+                        <span class="footer-label d-block mb-1">Institution</span>
+                        <p class="footer-text mb-0">
+                            University of Padova, Italy
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="footer-label d-block mb-1">Links</span>
+                        <p class="footer-text mb-0">
+                            <a routerLink="about" class="footer-link">License and disclaimer</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="https://elixir-europe.org/" class="elixir-logo-link">
+                        <img src="assets/logos/ELIXIR_logo.svg" style="width: 38px; height: 38px;"
+                             class="rounded-circle bg-white p-1" alt="ELIXIR logo">
+                    </a>
+                    <p class="mb-0 footer-text">
+                        Part of <a href="https://elixir-europe.org/" class="footer-link">ELIXIR</a>
+                        and the
+                        <a href="https://elixir-europe.org/communities/intrinsically-disordered-proteins" class="footer-link">IDP Community</a>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- How to Cite -->
+            <div class="col-lg-4">
+                <span class="footer-heading">
+                    <i class="bi bi-quote me-1"></i> How to Cite
+                </span>
+                <div class="cite-card">
+                    <p class="footer-text mb-2">
+                        <strong class="text-white">PED in 2024:</strong> improving the community deposition of structural
+                        ensembles for IDPs — Ghafouri, Lazar et al., (2023) <em>NAR</em>, gkad947.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a href="https://www.ncbi.nlm.nih.gov/pubmed/37904608"
+                           class="btn btn-sm px-3 cite-btn">
+                            <i class="bi bi-box-arrow-up-right me-1"></i>PubMed
+                        </a>
+                        <a href="https://doi.org/10.1093/nar/gkad947"
+                           class="btn btn-sm px-3 cite-btn">
+                            <i class="bi bi-box-arrow-up-right me-1"></i>NAR
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partners & Follow -->
+            <div class="col-lg-3">
+                <span class="footer-heading">
+                    <i class="bi bi-share me-1"></i> Follow Us
+                </span>
+                <a href="https://twitter.com/proteinensemble" class="social-link mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+                    </svg>
+                    <span class="fw-bold text-white" style="font-size: 0.82rem;">@proteinEnsemble</span>
+                </a>
+                
+                <!-- Partner Logos -->
+                <div class="partner-logos mt-3">
+                    <span class="footer-label d-block mb-2">Partners</span>
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="http://www.biomed.unipd.it/?L=1" class="partner-logo-link">
+                            <img src="assets/logos/DSB_logo_white.svg" alt="Dept. Biomed. Sci logo">
+                        </a>
+                        <a href="https://www.unipd.it/en/" class="partner-logo-link">
+                            <img src="assets/logos/unipd.png" alt="UniPD logo" style="width: 34px; height: 34px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Bottom bar -->
+        <div class="footer-bottom d-md-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                    <img alt="CC BY 4.0" style="height: 18px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+                <span>Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+            </div>
+            <span class="mt-2 mt-md-0 d-block">&copy; {{ currentYear }} Protein Ensemble Database</span>
+        </div>
     </div>
-    <div class="col-md-auto pt-2 pb-2">
-      <div class="row align-items-center">
-        <div class="col-auto">
-          <a href="http://www.biomed.unipd.it/?L=1">
-            <img class="img-logo" src="assets/logos/DSB_logo_white.svg" alt="Dept. Biomed. Sci logo">
-          </a>
-        </div>
-        <div class="col footer-text pl-0 d-md-none">
-          <small>Department of Biomedical Sciences.</small>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-auto pt-2 pb-2">
-      <div class="row align-items-center">
-        <div class="col-auto">
-          <a href="https://www.unipd.it/en/">
-            <img class="img-logo" src="assets/logos/UniPD-800_logo_white.svg" alt="UniPD logo">
-          </a>
-        </div>
-        <div class="col footer-text pl-0 d-md-none">
-          <small>University of Padua.</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</footer>

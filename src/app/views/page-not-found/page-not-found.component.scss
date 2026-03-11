@@ -1,0 +1,243 @@
+@import 'variables';
+
+// ═══════════════════════════════════════════════════════════
+// 404 PAGE - MODERN UI STYLING (Matching Help/About)
+// ═══════════════════════════════════════════════════════════
+
+// ─── Layout ─────────────────────────────────────────────────
+.container-xl {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-page {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// ─── Error Icon ─────────────────────────────────────────────
+.error-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($primary-light, 0.05) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba($primary, 0.15);
+
+  i {
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// ─── Error Code ─────────────────────────────────────────────
+.error-code {
+  font-size: 6rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, $primary-extra-dark 0%, $primary 50%, $primary-light 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ─── Error Title ────────────────────────────────────────────
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $primary-dark;
+  margin-bottom: 1rem;
+}
+
+// ─── Error Message ──────────────────────────────────────────
+.error-message {
+  font-size: 1.1rem;
+  color: $text-secondary;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+// ─── Action Buttons ─────────────────────────────────────────
+.error-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.75rem;
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: white;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba($primary, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($primary, 0.4);
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.btn-secondary-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.75rem;
+  background: white;
+  color: $primary;
+  border: 2px solid rgba($primary, 0.2);
+  border-radius: 0.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $primary;
+    background: rgba($primary, 0.05);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+}
+
+// ─── Help Text ──────────────────────────────────────────────
+.error-help {
+  margin-bottom: 2.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba($primary, 0.04);
+  border-radius: 0.75rem;
+  border: 1px solid rgba($primary, 0.1);
+
+  p {
+    margin: 0;
+    color: $text-secondary;
+    font-size: 0.95rem;
+
+    a {
+      color: $primary;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// ─── Quick Links ────────────────────────────────────────────
+.quick-links {
+  h6 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: $primary;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      font-size: 1rem;
+    }
+  }
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 767.98px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: linear-gradient(135deg, rgba($primary, 0.04) 0%, rgba($primary-light, 0.02) 100%);
+  border: 1px solid rgba($primary, 0.1);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 1.5rem;
+    color: $primary;
+    transition: transform 0.3s ease;
+  }
+
+  span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $primary-dark;
+  }
+
+  &:hover {
+    background: rgba($primary, 0.08);
+    border-color: rgba($primary, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba($primary, 0.12);
+    text-decoration: none;
+
+    i {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// ─── Responsive ─────────────────────────────────────────────
+@media (max-width: 575.98px) {
+  .error-code {
+    font-size: 4.5rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .error-icon {
+    width: 100px;
+    height: 100px;
+
+    i {
+      font-size: 2.75rem;
+    }
+  }
+
+  .btn-primary-action,
+  .btn-secondary-action {
+    width: 100%;
+    justify-content: center;
+  }
+}

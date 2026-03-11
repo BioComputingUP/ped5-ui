@@ -1,15 +1,13 @@
-<div *ngIf="!isLoading">
-    <div class="row mx-2 mb-4 p-2" *ngFor="let chain of entryData['construct_chains']; let chainIdx = index;">
-        <div class="col">
-            <div class="row">
-                <p><strong>Chain name:</strong> {{chain.chain_name}}</p>
+<div class="fv-section" *ngIf="!isLoading">
+    <div class="chain-card" *ngFor="let chain of entryData['construct_chains']; let chainIdx = index;">
+        <div class="chain-header">
+            <div class="chain-badge">
+                <i class="bi bi-link-45deg me-2"></i>Chain: {{chain.chain_name}}
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <app-fv-sequence-merge [sequence]="chain.alignment.pdb_sequence" [fvId]="chain.chain_name + '_dssp'"
-                        [dsspData]="dsspData" [chainName]="chain.chain_name" [chainData]="chain"></app-fv-sequence-merge>
-                </div>
-            </div>
+        </div>
+        <div class="chain-content">
+            <app-fv-sequence-merge [sequence]="chain.alignment.pdb_sequence" [fvId]="chain.chain_name + '_dssp'"
+                [dsspData]="dsspData" [chainName]="chain.chain_name" [chainData]="chain"></app-fv-sequence-merge>
         </div>
     </div>
 </div>

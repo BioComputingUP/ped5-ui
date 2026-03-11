@@ -1,4 +1,3 @@
-<div class="row mx-2 mb-2 p-0" *ngFor="let ens of entryData['ensembles']; last as isLast;">
-    <app-ensemble-info [entryId]="entryData['entry_id']" [ensembleData]="ens"></app-ensemble-info>
-    <div class="mt-2" *ngIf="!isLast"> <hr> </div>
+<div class="ensembles-list">
+    <app-ensemble-info *ngFor="let ens of entryData['ensembles']" [entryId]="entryData['entry_id']" [ensembleData]="ens"></app-ensemble-info>
 </div>

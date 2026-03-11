@@ -1,0 +1,135 @@
+@import 'variables';
+
+// Modern table container
+.table-responsive {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba($primary, 0.08);
+  box-shadow: 0 4px 25px rgba($primary, 0.05);
+}
+
+.entry-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  // Table Header
+  thead th {
+    background-color: rgba($primary, 0.03);
+    color: $primary-dark;
+    text-align: left;
+    padding: 0.7rem 1rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid rgba($primary, 0.1);
+  }
+
+  // Table Body
+  tbody td {
+    padding: 0.8rem 1rem;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba($primary, 0.06);
+    transition: background-color 0.15s ease-in-out;
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+
+  tbody tr:hover {
+    background-color: rgba($primary, 0.04);
+  }
+
+  // Sortable header styles
+  th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba($primary, 0.08);
+    }
+  }
+
+  // --- Badge Styles ---
+
+  .entry-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.7rem;
+    border-radius: 0.35rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &.experimental {
+      background: $primary;
+      color: white;
+    }
+
+    &.predicted {
+      background: #e67e22;
+      color: white;
+    }
+  }
+
+  .tag-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    line-height: 1;
+
+    &.tag-experiment {
+      background: rgba(#3498db, 0.12);
+      color: #2980b9;
+    }
+
+    &.tag-ensemble {
+      background: rgba(#9b59b6, 0.12);
+      color: #8e44ad;
+    }
+
+    &.tag-md {
+      background: rgba(#1abc9c, 0.12);
+      color: #16a085;
+    }
+  }
+
+  .protein-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    background: rgba($primary, 0.15);
+    color: $primary-dark;
+    transition: all 0.2s ease;
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+
+    &:hover {
+      color: white;
+      background-color: $primary;
+      transform: translateY(-1px);
+    }
+  }
+}

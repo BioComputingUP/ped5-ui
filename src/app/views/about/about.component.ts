@@ -10,6 +10,7 @@ import { InternalService } from 'src/app/services/internal.service';
 })
 export class AboutComponent implements OnInit {
   public nodes;
+  public activeSection = 'overview';
   options = {
     animateExpand: true,
     animateSpeed: 30,
@@ -122,10 +123,17 @@ export class AboutComponent implements OnInit {
     this.ontologyFilterFrom.setValue('');
   }
 
-  public scroll(el: HTMLElement) {
-    const y = el.getBoundingClientRect().top + window.scrollY - 75;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-    // el.scrollIntoView(true);
+  public scrollTo(sectionId: string, event?: Event): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    this.activeSection = sectionId;
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
 }

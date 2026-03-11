@@ -1,0 +1,57 @@
+@import 'variables';
+
+.entry-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.35rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+
+  &.experimental {
+    background: $primary;
+    color: white;
+  }
+
+  &.predicted {
+    background: #e67e22;
+    color: white;
+  }
+}
+
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  &.tag-experiment {
+    background: rgba(#3498db, 0.12);
+    color: #2980b9;
+  }
+
+  &.tag-ensemble {
+    background: rgba(#9b59b6, 0.12);
+    color: #8e44ad;
+  }
+
+  &.tag-md {
+    background: rgba(#1abc9c, 0.12);
+    color: #16a085;
+  }
+}
+
+.protein-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $primary-extra-dark;
+    margin: 0;
+}
+
+.card-label {
+    font-weight: 600;
+    color: $text-secondary;
+}

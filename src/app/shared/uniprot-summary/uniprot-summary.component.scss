@@ -1,0 +1,177 @@
+@import 'variables';
+
+// ═══════════════════════════════════════════════════════════
+// UNIPROT SUMMARY - CLEAN MODERN UI
+// ═══════════════════════════════════════════════════════════
+
+.uniprot-summary {
+  padding: 0;
+}
+
+// ─── Entry Header ───────────────────────────────────────────
+.entry-header {
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.75rem;
+}
+
+.entry-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.entry-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.35rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+
+  &.experimental {
+    background: $primary;
+    color: white;
+  }
+}
+
+.entry-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: $primary-extra-dark;
+  line-height: 1.4;
+  margin: 0;
+}
+
+// ─── Info Cards Grid ────────────────────────────────────────
+.info-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  
+  @media (max-width: 991.98px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.6rem;
+}
+
+.info-card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $primary;
+  border-radius: 0.4rem;
+  flex-shrink: 0;
+
+  i {
+    font-size: 1rem;
+    color: white;
+  }
+}
+
+.info-card-content {
+  flex: 1;
+  min-width: 0;
+
+  h6 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.35rem;
+  }
+}
+
+.refs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.ref-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  background: $primary-dark;
+  color: white;
+  border-radius: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+
+  i {
+    font-size: 0.65rem;
+  }
+
+  &:hover {
+    background: $primary-extra-dark;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+// ─── Function Card ───────────────────────────────────────
+.function-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.function-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $primary;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+
+  i {
+    font-size: 1.1rem;
+    color: white;
+  }
+}
+
+.function-content {
+  flex: 1;
+
+  h6 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.function-text {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}

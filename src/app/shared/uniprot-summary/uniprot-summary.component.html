@@ -1,0 +1,59 @@
+<div class="uniprot-summary">
+  <!-- Entry Header -->
+  <div class="entry-header">
+      <div class="entry-title-row" *ngIf="uniprotACC">
+        <h1 class="entry-title">{{uniprotACC}}</h1>
+      </div>
+      <h2 class="h6" *ngIf="proteinData">{{proteinData['name']}}</h2>
+  </div>
+
+  <!-- Info Cards Grid -->
+  <div class="info-cards-grid">
+      <!-- Expression Organism Card -->
+      <div class="info-card" *ngIf="proteinData['organism_name']">
+          <div class="info-card-icon">
+              <i class="bi bi-virus"></i>
+          </div>
+          <div class="info-card-content">
+              <h6>Organism</h6>
+              {{proteinData['organism_name']}}
+              <a class="ref-badge" href="https-www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{proteinData['organism_taxon']}}" target="_blank">
+                  taxonomy:{{proteinData['organism_taxon']}}
+                  <i class="bi bi-box-arrow-up-right ms-1"></i>
+              </a>
+          </div>
+      </div>
+
+      <!-- Cross References Card -->
+      <div class="info-card">
+          <div class="info-card-icon">
+              <i class="bi bi-link-45deg"></i>
+          </div>
+          <div class="info-card-content">
+              <h6>Cross Reference</h6>
+              <div class="refs-list">
+                  <a class="ref-badge" *ngIf="disprotGeneralData && disprotGeneralData.hasOwnProperty('disprot_id')" href="https://disprot.org/{{disprotGeneralData['disprot_id']}}" target="_blank">
+                    DisProt:{{disprotGeneralData['disprot_id']}} <i class="bi bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                  <a class="ref-badge" href="https://uniprot.org/uniprot/{{uniprotACC}}" target="_blank">
+                    UniProt:{{uniprotACC}} <i class="bi bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                  <a class="ref-badge" href="https://mobidb.org/{{uniprotACC}}" target="_blank">
+                    MobiDB:{{uniprotACC}} <i class="bi bi-box-arrow-up-right ms-1"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Function Section -->
+  <div class="function-card" *ngIf="proteinData['function'] && proteinData['function'].length > 0">
+      <div class="function-icon">
+          <i class="bi bi-journal-text"></i>
+      </div>
+      <div class="function-content">
+          <h6>Function</h6>
+          <p class="function-text">{{proteinData['function']}}</p>
+      </div>
+  </div>
+</div>

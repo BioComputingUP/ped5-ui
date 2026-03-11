@@ -1,228 +1,267 @@
-<div class="container-xl">
-<!--    &lt;!&ndash; Alert&ndash;&gt;-->
-<!--    <div class="row align-items-center">-->
-<!--        <div class="alert alert-danger" role="alert">-->
-<!--            <dl class="mb-0">-->
-<!--                <dt>Important notice:</dt>-->
-<!--                <dd class="mb-0">PED will be temporarily unavailable on 11 October 2024 due to a scheduled-->
-<!--                    power outage.-->
-<!--                </dd>-->
-<!--            </dl>-->
-<!--        </div>-->
-<!--    </div>-->
+<div class="container-xl py-3">
 
-    <div class="row mb-4 text-center">
-        <h3>Welcome to the <strong>Protein Ensemble Database</strong></h3>
+    <!-- Hero -->
+    <div class="hero-section text-center">
+        <!-- <div class="hero-badge mb-2">
+            <i class="bi bi-database me-1"></i> Open-Access Repository
+        </div> -->
+        <h2>Protein Ensemble Database</h2>
+        <!-- <p class="lead mb-0">Curated structural ensembles for intrinsically disordered proteins &amp; regions</p> -->
     </div>
 
-    <div class="row mb-2">
-        <p class="text-justify small">
-            The <strong>Protein Ensemble Database (PED)</strong> is an open access database for the deposition of
-            structural ensembles,
-            including <em>intrinsically disordered proteins (IDPs)</em>. Manually curated data of structural ensembles
-            measured
-            with nuclear magnetic resonance spectroscopy, small-angle X-ray scattering, fluorescence resonance energy
-            transfer are annotated in PED. The deposition of structural coordinates can be used for the evaluation of
-            the
-            ensembles,
-            thus supporting the evolution of new modeling methods leading to much improved
-            skills of connecting the characteristic <em>"lack of structure"</em> of IDPs with function.
-            Each entry in PED corresponds to the primary experimental data and to the structural
-            ensembles associated with these data.
-        </p>
-    </div>
-
-    <!-- Search bar -->
-    <div class="row mb-2">
-        <div class="col-md-8 offset-md-2">
-            <strong>
-                Search in PED
-            </strong>
-            <div class="input-group">
-                <input id="searchform" class="form-control" placeholder="ex: PED00001, P38634, ..."
-                       [formControl]="searchFormControl" type="text">
-                <button class="btn btn-outline-primary btn-primary-dark" (click)="goToBrowsePage()">Search</button>
-            </div>
-        </div>
-    </div>
-    <div class="row mb-4">
-        <div class="col-md-8 offset-md-2">
-            <strong class="ms-2 me-2">Examples</strong>
-            <a class="badge bg-primary me-2" routerLink="/proteins/uniprot/P38634">
-                Yeast SIC1 <i class="bi bi-link-45deg"></i>
-            </a>
-            <a class="badge bg-primary me-2" routerLink="/proteins/uniprot/Q89933">
-                MeV Nucleoprotein <i class="bi bi-link-45deg"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- How to cite -->
-    <div class="row mb-4">
-        <div class="col mb-0">
-            <div class="card text-left" style="border: none">
-                <div class="card-header">
-                    How to cite
-                </div>
-                <div class="card-body pb-0">
-                    <p class="mb-1 py-0" style="text-align: center;">
-                        <strong>PED in 2024: improving the community deposition of structural ensembles for
-                            intrinsically disordered proteins</strong>
-                        Ghafouri, Lazar et al., (2023) <i>Nucleic Acids Research</i>, gkad947.
-
-                        <a href="https://www.ncbi.nlm.nih.gov/pubmed/37904608">
-                            <strong>PubMed</strong><i class="bi bi-link-45deg"></i>
-                        </a>,
-                        <a href="https://doi.org/10.1093/nar/gkad947">
-                            <strong>NAR</strong><i class="bi bi-link-45deg"></i>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-
-        <!-- Info -->
-        <div class="col">
-            <div class="card" style="border: none">
-                <div class="card-header">
-                    <span class="card-title">Info</span>
-                </div>
+    <!-- About + Stats -->
+    <div class="row g-3 mb-4">
+        <!-- About + Search -->
+        <div class="col-lg-7">
+            <div class="card home-card border-0 shadow-sm h-100">
                 <div class="card-body">
-                    <div class="row mb-2">
-                        Funding
-                    </div>
-                    <div class="row small mb-4 text-justify">
-                        <div class="col">
-                            This database is part of a project that has received funding from the European Union’s
-                            Horizon
-                            2020 research and innovation programme under grant agreement No 778247.
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-4">
-                        <div class="col-auto ">
-                            <a href="https://elixir-europe.org/">
-                                <img src="assets/logos/ELIXIR_logo.svg" style="width: 3em; height: 3em;"
-                                     class="ml-3 p-1 img-logo align-self-center rounded-circle border border-dark shadow-logo"
-                                     alt="ELIXIR logo">
-                            </a>
-                        </div>
-                        <div class="col mx-0 px-0">
-                            <p class="mt-0 mb-0 small">The PED is part of the <a
-                                    href="https://elixir-europe.org/">ELIXIR
-                                infrastructure</a> and a service of the <a
-                                    href="https://elixir-europe.org/communities/intrinsically-disordered-proteins">
-                                IDP Community</a>.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        API
-                    </div>
-                    <div class="row small mb-2">
-                        <p>
-                            REST API documentation <a routerLink="/help" fragment="api">here</a> (Version
-                            <strong>5.0</strong>)
+                    <div class="about-text mb-3">
+                        <p class="mb-2">
+                            <strong class="text-dark">PED</strong> is a freely available, manually curated repository
+                            for depositing, sharing and analyzing <em>structural ensembles</em> of intrinsically
+                            disordered proteins and regions <strong>(IDPs/IDRs)</strong>.
+                        </p>
+                        <p class="mb-0">
+                            It integrates data from <span class="method-tag">NMR</span>
+                            <span class="method-tag">SAXS</span>
+                            <span class="method-tag">smFRET</span>
+                            <span class="method-tag">MD</span>
+                            to support ensemble validation and advance modeling methodologies.
                         </p>
                     </div>
-
-                    <div class="row mb-2">
-                        Licence
-                    </div>
-                    <div class="row mb-4 small">
-                        <div class="row align-items-center">
-                            <div class="col-auto"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-                                <img alt="Creative Commons License" style="border-width:0"
-                                     src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
-                            </a></div>
-                            <div class="col ps-0" style="text-align: justify">This work is licensed under a
-                                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-                                    Creative Commons Attribution 4.0 International License</a>.
-                            </div>
+                    <div class="search-wrapper mb-3">
+                        <label class="search-label">
+                            <i class="bi bi-search me-1"></i> Explore entries
+                        </label>
+                        <div class="search-box">
+                            <i class="bi bi-search search-icon"></i>
+                            <select class="search-type-select" [formControl]="typeFilterControl">
+                                <option value="total">All types</option>
+                                <option value="predicted">Predicted</option>
+                                <option value="experimental">Experimental</option>
+                            </select>
+                            <span class="search-divider"></span>
+                            <input id="searchform" class="search-input"
+                                   placeholder="PED ID, UniProt, protein name..."
+                                   [formControl]="searchFormControl" type="text"
+                                   (keyup.enter)="goToBrowsePage()">
+                            <button class="search-btn" (click)="goToBrowsePage()">
+                                Search
+                            </button>
+                        </div>
+                        <div class="search-hints">
+                            <span class="hint-label">Examples:</span>
+                            <a class="hint-tag" routerLink="/proteins/uniprot/P38634">
+                                P38634 <span class="text-muted">(SIC1)</span>
+                            </a>
+                            <a class="hint-tag" routerLink="/entries/PED00001">
+                                PED00001
+                            </a>
+                            <a class="hint-tag" routerLink="/proteins/uniprot/Q89933">
+                                Q89933 <span class="text-muted">(MeV)</span>
+                            </a>
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
-
-        <!-- Statistics -->
-        <div class="col">
-            <div class="row">
-                <div class="card" style="border: none">
-                    <div class="card-header"><span class="card-title">Statistics</span></div>
-                    <div class="card-body">
-                        <div class="row mb-2">
-                            <div class="col">
-                                <img style="width: 100%" src="/assets/nicoG_Rg.svg">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col text-md-left ">
-                                <div class="col-12  small">
-                                    <div class="row">
-                                        <div class="col offset-lg-1 mr-auto">Number of proteins</div>
-                                        <div class="col-auto">{{ statsData["proteins"] || "-" }}</div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col offset-lg-1 mr-auto">Number of entries</div>
-                                        <div class="col-auto">{{ statsData["entries"] || "-" }}</div>
-                                        <div class="col-lg-1"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col offset-lg-1 mr-auto">Number of ensembles</div>
-                                        <div class="col-auto">{{ statsData["ensembles"] || "-" }}</div>
-                                        <div class="col-lg-1"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col offset-lg-1 mr-auto">Number of conformers</div>
-                                        <div class="col-auto">{{ statsData["conformers"] || "-" }}</div>
-                                        <div class="col-lg-1"></div>
-
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col offset-lg-1 mr-auto">Last updated</div>
-                                        <div class="col-auto">25. 11. 2025</div>
-                                        <div class="col-lg-1"></div>
-
-                                    </div>
+                    <!-- Quick Access -->
+                    <div class="quick-access-label mb-2">
+                        <i class="bi bi-grid-3x3-gap me-1"></i> Quick access
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-6 col-md-3">
+                            <a routerLink="/browse" class="shortcut-tile text-decoration-none">
+                                <div class="shortcut-icon" style="background: rgba(34,116,165,0.08); color: #2274a5;">
+                                    <i class="bi bi-collection"></i>
                                 </div>
-                            </div>
-
+                                <span class="shortcut-title">Browse</span>
+                                <span class="shortcut-desc">Explore all entries</span>
+                            </a>
                         </div>
+                        <div class="col-6 col-md-3">
+                            <a routerLink="/deposition" class="shortcut-tile text-decoration-none">
+                                <div class="shortcut-icon" style="background: rgba(39,174,96,0.08); color: #27ae60;">
+                                    <i class="bi bi-cloud-upload"></i>
+                                </div>
+                                <span class="shortcut-title">Deposit</span>
+                                <span class="shortcut-desc">Submit ensembles</span>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a routerLink="/api" class="shortcut-tile text-decoration-none">
+                                <div class="shortcut-icon" style="background: rgba(230,126,34,0.08); color: #e67e22;">
+                                    <i class="bi bi-braces"></i>
+                                </div>
+                                <span class="shortcut-title">API</span>
+                                <span class="shortcut-desc">REST endpoints</span>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a routerLink="/help" class="shortcut-tile text-decoration-none">
+                                <div class="shortcut-icon" style="background: rgba(142,68,173,0.08); color: #8e44ad;">
+                                    <i class="bi bi-question-circle"></i>
+                                </div>
+                                <span class="shortcut-title">Help</span>
+                                <span class="shortcut-desc">Guides & FAQs</span>
+                            </a>
+                        </div>
+                    </div>
 
+                    <!-- How to Cite -->
+                    <div class="mt-3">
+                        <div class="cite-card-home">
+                            <h5><i class="bi bi-quote me-1"></i> How to Cite</h5>
+                            <p class="mb-2">
+                                <strong>PED in 2024:</strong> improving the community deposition of structural
+                                ensembles for IDPs — Ghafouri, Lazar et al., (2023) <em>NAR</em>, gkad947.
+                            </p>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/37904608" target="_blank" rel="noopener"
+                                   class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i>PubMed
+                                </a>
+                                <a href="https://doi.org/10.1093/nar/gkad947" target="_blank" rel="noopener"
+                                   class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i>NAR
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Social Media -->
-        <div class="col" style="max-height: 440px; overflow-y: scroll">
-            <div class="card" style="border: none">
-                <div class="card-header">
-                    <span class="card-title">
-                        Social media
+        <div class="col-lg-5">
+            <div class="card home-card border-0 shadow-sm h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span class="fw-bold"><i class="bi bi-bar-chart-fill text-primary me-2"></i>Statistics</span>
+                    <span class="badge bg-primary text-white" style="font-size: 0.65rem;" *ngIf="lastUpdated">
+                        <i class="bi bi-clock me-1"></i>Updated {{ lastUpdated }}
                     </span>
                 </div>
-                <div class="card-body small">
-                    <img class="card-img" style="width: 1rem" src="/assets/icon_twitter.svg">
-                    <a href="https://twitter.com/proteinensemble"> @proteinEnsemble</a>
-                    <a class="twitter-timeline" href="https://twitter.com/proteinensemble"
-                       data-chrome="nofooter noheader noborders transparent" data-aria-polite="assertive"
-                       data-tweet-limit="1">
-                    </a>
+                <div class="card-body">
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <div class="stat-tile">
+                                <div class="stat-icon" style="background: rgba(34,116,165,0.1); color: #2274a5;">
+                                    <i class="bi bi-body-text"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">{{ statsData["proteins"] || "—" }}</span>
+                                    <span class="stat-label">Proteins</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-tile">
+                                <div class="stat-icon" style="background: rgba(47,131,72,0.1); color: #2F8348;">
+                                    <i class="bi bi-archive"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">{{ statsData["entries"] || "—" }}</span>
+                                    <span class="stat-label">Entries</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-tile">
+                                <div class="stat-icon" style="background: rgba(230,126,34,0.1); color: #e67e22;">
+                                    <i class="bi bi-layers"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">{{ statsData["ensembles"] || "—" }}</span>
+                                    <span class="stat-label">Ensembles</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-tile">
+                                <div class="stat-icon" style="background: rgba(142,68,173,0.1); color: #8e44ad;">
+                                    <i class="bi bi-diagram-3"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">{{ statsData["conformers"] || "—" }}</span>
+                                    <span class="stat-label">Conformers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-frame">
+                        <div class="chart-label">
+                            <i class="bi bi-graph-up me-1"></i>Rg Distribution
+                        </div>
+                        <img class="w-100" src="/assets/nicoG_Rg.svg" alt="Rg distribution chart">
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
 
+    <!-- Latest Entries -->
+    <div class="mb-4">
+        <div class="section-header">
+            <span class="section-title">
+                <i class="bi bi-clock-history text-primary"></i> Latest Entries
+            </span>
+            <a routerLink="/browse" class="btn btn-outline-primary btn-sm view-all-btn">
+                View all <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+        <div class="row g-3" *ngIf="latestEntries?.length > 0; else loadingEntries">
+            <div class="col-xl col-md-6" *ngFor="let entry of latestEntries">
+                <a [routerLink]="'/entries/' + entry.entry_id" class="text-decoration-none">
+                    <div class="card border-0 shadow-sm h-100 entry-card position-relative"
+                         [ngClass]="entry.description?.ensembles_type === 'predicted' ? 'entry-predicted' : 'entry-experimental'">
+                        <div class="entry-thumb">
+                            <span class="entry-type-ribbon"
+                                  [ngClass]="entry.description?.ensembles_type === 'predicted' ? 'ribbon-predicted' : 'ribbon-experimental'">
+                                <i class="bi" [ngClass]="entry.description?.ensembles_type === 'predicted' ? 'bi-cpu' : 'bi-eyedropper'"></i>
+                                {{ entry.description?.ensembles_type || 'unknown' }}
+                            </span>
+                            <img *ngIf="entry.ensembles?.length > 0; else defaultThumb"
+                                 [src]="getEntryThumbUrl(entry)"
+                                 alt="Ensemble animation" loading="lazy"
+                                 (error)="$event.target.src = 'assets/logos/PED_logo_blue.svg'; $event.target.classList.add('fallback')">
+                            <ng-template #defaultThumb>
+                                <img src="assets/logos/PED_logo_blue.svg" alt="PED" class="fallback">
+                            </ng-template>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="badge"
+                                      [ngClass]="entry.description?.ensembles_type === 'predicted' ? 'badge-predicted' : 'badge-experimental'"
+                                      style="font-size: 0.72rem; letter-spacing: 0.03em; font-weight: 700;">
+                                    {{ entry.entry_id }}
+                                </span>
+                            </div>
+                            <p class="text-dark mb-2 entry-title fw-medium">
+                                {{ entry.description?.title }}
+                            </p>
+                            <div class="d-flex gap-3 entry-meta mb-1">
+                                <span><i class="bi bi-layers me-1"></i>{{ entry.ensembles?.length || 0 }} ens.</span>
+                                <span><i class="bi bi-diagram-3 me-1"></i>{{ getTotalConformers(entry) }} conf.</span>
+                            </div>
+                            <div class="entry-meta mb-2" *ngIf="entry.creation_date">
+                                <span><i class="bi bi-calendar3 me-1"></i>{{ entry.creation_date | date:'medium' }}</span>
+                            </div>
+                            <div>
+                                <ng-container *ngFor="let chain of entry.construct_chains">
+                                    <ng-container *ngFor="let frag of chain.fragments">
+                                        <span *ngIf="frag.uniprot_acc" class="uniprot-badge me-1">
+                                            {{ frag.uniprot_acc }}
+                                        </span>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <ng-template #loadingEntries>
+            <div class="text-center text-muted py-5">
+                <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+                Loading latest entries...
+            </div>
+        </ng-template>
+    </div>
+
+</div>

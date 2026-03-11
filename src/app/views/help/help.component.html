@@ -1,36 +1,69 @@
 <div class="container-xl">
+    <!-- Header Section -->
+    <div class="help-header mb-5" id="overview">
+        <h1>
+            <i class="bi bi-question-circle-fill me-2"></i>Help & Documentation
+        </h1>
+        <p class="help-subtitle">Learn how to navigate and use the PED platform effectively</p>
+    </div>
+
     <div class="row">
+        <!-- Sidebar Navigation -->
         <div class="col-lg-3">
-            <div class="sticky-top" style="top: 90px;">
-                <h6>
-                    <p (click)="scroll(top)" style="cursor: pointer;">Help</p>
+            <div class="help-sidebar">
+                <h6 class="sidebar-title">
+                    <i class="bi bi-list-nested me-2"></i>Navigation
                 </h6>
-                <ul>
-                    <li (click)="scroll(gui)" style="cursor: pointer;">
-                        <p>GUI</p>
-                    </li>
+                <nav class="help-nav">
                     <ul>
-                        <li (click)="scroll(browse)" style="cursor: pointer;">
-                            <p>Browse page</p>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'overview'" (click)="scrollTo('overview', $event)">
+                                <i class="bi bi-house-door me-2"></i>
+                                <span>Overview</span>
+                            </a>
                         </li>
-                        <li (click)="scroll(protein)" style="cursor: pointer;">
-                            <p>Protein-centric page</p>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'gui'" (click)="scrollTo('gui', $event)">
+                                <i class="bi bi-window me-2"></i>
+                                <span>GUI</span>
+                            </a>
                         </li>
-                        <li (click)="scroll(ensemble)" style="cursor: pointer;">
-                            <p>Ensemble-centric page</p>
+                        <ul class="nav-submenu">
+                            <li>
+                                <a href="javascript:void(0)" class="nav-link-sub" [class.active]="activeSection === 'browse'" (click)="scrollTo('browse', $event)">
+                                    <i class="bi bi-table me-2"></i>
+                                    <span>Browse page</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="nav-link-sub" [class.active]="activeSection === 'protein'" (click)="scrollTo('protein', $event)">
+                                    <i class="bi bi-protein me-2"></i>
+                                    <span>Protein-centric page</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="nav-link-sub" [class.active]="activeSection === 'ensemble'" (click)="scrollTo('ensemble', $event)">
+                                    <i class="bi bi-collection me-2"></i>
+                                    <span>Ensemble-centric page</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <li class="nav-item-main">
+                            <a href="javascript:void(0)" class="nav-link" [class.active]="activeSection === 'mapping'" (click)="scrollTo('mapping', $event)">
+                                <i class="bi bi-arrow-left-right me-2"></i>
+                                <span>ID Mapping</span>
+                            </a>
                         </li>
                     </ul>
-                    <li (click)="scroll(mapping)" style="cursor: pointer;">
-                        <p>Mapping from old to new identifiers</p>
-                    </li>
-                </ul>
+                </nav>
             </div>
         </div>
-        <div class="col-lg-9">
-            <h1 #top>Help</h1>
 
-            <div class="row">
-                <div class="col">
+        <!-- Main Content -->
+        <div class="col-lg-9">
+            <!-- Introduction Section -->
+            <section class="help-section introduction-section mb-5">
+                <div class="section-content">
                     <p>
                         This section describes PED website use. Information about <strong>deposition in PED</strong> can
                         be found on the <a routerLink="/deposition">Deposition page.</a>
@@ -38,35 +71,54 @@
                         see the <a>API documentation </a> below.
                     </p>
                 </div>
-            </div>
+            </section>
 
-            <div class="row" #gui>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">Graphical User Interface</h2>
+            <!-- GUI Section -->
+            <section class="help-section" id="gui">
+                <div class="section-header">
+                    <h2>
+                        <i class="bi bi-window me-2"></i>Graphical User Interface
+                    </h2>
+                </div>
+                <div class="section-content">
                     <p>The PED graphical user interface allows easy access to PED depositions in a graphical way.
                         The data can be searched from the <a routerLink="/browse">Browse page</a> or
                         from the search box in the <a routerLink="/">Home page</a>.</p>
                 </div>
-            </div>
+            </section>
 
-            <div class="row" #browse>
-                <div class="col">
-                    <h4 class="mt-2">Browse page</h4>
+            <!-- Browse Page Section -->
+            <section class="help-section subsection" id="browse">
+                <div class="section-header">
+                    <h4>
+                        <i class="bi bi-table me-2"></i>Browse page
+                    </h4>
+                </div>
+                <div class="section-content">
                     <p>The <strong>Browse page</strong> is composed of a result table, a sidebar (left) and a search bar
                         (above the table).
                     </p>
-                    <ul>
+                    <ul class="features-list">
                         <li>
-                            The <strong>table</strong> lists search results. By default it shows the first 20 entries of
+                            <strong class="feature-title">
+                                <i class="bi bi-table me-1"></i>The table
+                            </strong>
+                            lists search results. By default it shows the first 20 entries of
                             the database sorted alphabetically by the PED identifier (second column).
                             You can change the table sorting by clicking on column headers.
                         </li>
                         <li>
-                            The <strong>sidebar</strong> allows users to select columns to visualize and
+                            <strong class="feature-title">
+                                <i class="bi bi-sliders me-1"></i>The sidebar
+                            </strong>
+                            allows users to select columns to visualize and
                             customize the results of their search.
                         </li>
                         <li>
-                            The <strong>search box</strong> right above the table offers a free text search against all
+                            <strong class="feature-title">
+                                <i class="bi bi-search me-1"></i>The search box
+                            </strong>
+                            right above the table offers a free text search against all
                             entry values.
                             Alternatively, it allows users to specify the field to search against,
                             <i>i.e. entry identifier, UniProt ACC, term</i>.
@@ -76,9 +128,9 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </section>
 
-            <div class="row" #protein>
+            <div class="row" id="protein">
                 <div class="col">
                     <h4 class="mt-2">Protein-centric page</h4>
                     <p>Users can look for a specific protein in PED by selecting its corresponding UniProt identifier,
@@ -125,7 +177,7 @@
                 </div>
             </div>
 
-            <div class="row" #ensemble>
+            <div class="row" id="ensemble">
                 <div class="col">
                     <h4 class="mt-2">Ensemble-centric page</h4>
                     <p>Users can look for a specific experimental entry in PED by selecting its corresponding PED
@@ -175,191 +227,307 @@
                 </div>
             </div>
 
-            <div class="row" #mapping>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">Mapping from old to new identifiers</h2>
-
-                    <p>
-                        <strong class="me-2">PED1AAA</strong> <a class="badge bg-primary me-2"
-                            routerLink="/entries/PED00001">PED00001 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of pSic1 (1-90) with
-                        phosphorylations at Thr5, Thr33, Thr45, Ser69, Ser76, Ser80
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED1AAB</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00002">PED00002 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Heat shock protein beta-6 (57-160), V67G
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED1AAD</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00003">PED00003 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of beta-synuclein (1-134)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED2AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00004">PED00004 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of p27 Kip1 (25-93)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED2AAB</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00005">PED00005 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Heat shock protein beta-6 (24-160)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED2AAD</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00006">PED00006 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of hybrid beta synuclein G25E (1-72); alpha synuclein (73-83); beta
-                        synuclein
-                        (73-134)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED3AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00007">PED00007 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of hybrid GFP (2-238), CYNEX4 (1-319), GFP (2-238)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED3AAB</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00008">PED00008 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Heat shock protein beta-6 (40-160)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED3AAD</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00009">PED00009 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Mengovirus leader protein (1-67)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED4AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00010">PED00010 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of hybrid GFP (2-238), CYNEX4 (1-319) with a T266D mutation, GFP (2-238)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED4AAB</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00011">PED00011 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Nucleocapsid of murine respirovirus, 458-510, with three HID
-                        modifications
-                        and ACE and NME capping.
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED4AAB</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00025">PED00025 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Nucleocapsid of murine respirovirus, 458-509, wild type.
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED4AAD</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00012">PED00012 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Mengovirus leader protein (1-67) with a deletion at amino acid 24,
-                        phosphorylated at Thr51
-
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED5AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00013">PED00013 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of PaaA2 antitoxin from the human pathogen E. coli O157
-
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED5AAC</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00014">PED00014 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of pSic1 (1-90) phosphorylated at Thr5, Thr33, Thr45, Ser69, Ser76 and
-                        Ser80, in
-                        complex with SKP1 (4-186) and CDC4 (270-744)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED5AAD</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00015">PED00015 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Mengovirus leader protein (1-67), phosphorylated at Tyr45 and Thr51
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED6AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00016">PED00016 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of p15PAF (2-111)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED6AAC</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00017">PED00017 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of isoform Tau-f of microtubule-associated protein tau
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED7AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00019">PED00019 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Heatshock protein beta-6 (1-160)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED7AAC</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00020">PED00020 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of measles virus nucleoprotein (400-525)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED8AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00021">PED00021 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Heatshock protein beta-6 (57-160)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED8AAC</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00022">PED00022 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Protein enhancer of sevenless 2B (1-59)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED9AAA</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00023">PED00023 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of Sic1 (1-90)
-                    </p>
-
-                    <p>
-                        <strong class="me-2">PED9AAC</strong> <a class="badge bg-primary me-3"
-                            routerLink="/entries/PED00024">PED00024 <i class="bi bi-link-45deg"
-                                style="font-size: small"></i></a>
-                        Structural ensemble of alpha-synuclein
-                    </p>
-
+            <!-- ID Mapping Section -->
+            <section class="help-section" id="mapping">
+                <div class="section-header">
+                    <h2>
+                        <i class="bi bi-arrow-left-right me-2"></i>Mapping from old to new identifiers
+                    </h2>
                 </div>
-            </div>
+                <div class="section-content">
+                    <div class="mapping-list">
 
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED1AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00001">PED00001</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of pSic1 (1-90) with phosphorylations at Thr5, Thr33, Thr45, Ser69, Ser76, Ser80</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED1AAB</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00002">PED00002</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Heat shock protein beta-6 (57-160), V67G</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED1AAD</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00003">PED00003</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of beta-synuclein (1-134)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED2AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00004">PED00004</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of p27 Kip1 (25-93)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED2AAB</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00005">PED00005</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Heat shock protein beta-6 (24-160)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED2AAD</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00006">PED00006</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of hybrid beta synuclein G25E (1-72); alpha synuclein (73-83); beta synuclein (73-134)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED3AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00007">PED00007</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of hybrid GFP (2-238), CYNEX4 (1-319), GFP (2-238)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED3AAB</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00008">PED00008</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Heat shock protein beta-6 (40-160)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED3AAD</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00009">PED00009</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Mengovirus leader protein (1-67)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED4AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00010">PED00010</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of hybrid GFP (2-238), CYNEX4 (1-319) with a T266D mutation, GFP (2-238)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED4AAB</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00011">PED00011</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Nucleocapsid of murine respirovirus, 458-510, with three HID modifications and ACE and NME capping.</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED4AAB</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00025">PED00025</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Nucleocapsid of murine respirovirus, 458-509, wild type.</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED4AAD</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00012">PED00012</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Mengovirus leader protein (1-67) with a deletion at amino acid 24, phosphorylated at Thr51</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED5AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00013">PED00013</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of PaaA2 antitoxin from the human pathogen E. coli O157</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED5AAC</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00014">PED00014</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of pSic1 (1-90) phosphorylated at Thr5, Thr33, Thr45, Ser69, Ser76 and Ser80, in complex with SKP1 (4-186) and CDC4 (270-744)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED5AAD</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00015">PED00015</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Mengovirus leader protein (1-67), phosphorylated at Tyr45 and Thr51</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED6AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00016">PED00016</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of p15PAF (2-111)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED6AAC</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00017">PED00017</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of isoform Tau-f of microtubule-associated protein tau</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED7AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00019">PED00019</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Heatshock protein beta-6 (1-160)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED7AAC</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00020">PED00020</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of measles virus nucleoprotein (400-525)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED8AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00021">PED00021</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Heatshock protein beta-6 (57-160)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED8AAC</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00022">PED00022</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Protein enhancer of sevenless 2B (1-59)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED9AAA</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00023">PED00023</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of Sic1 (1-90)</p>
+                            </div>
+                        </div>
+
+                        <div class="mapping-card">
+                            <div class="mapping-card-accent"></div>
+                            <div class="mapping-card-content">
+                                <div class="mapping-ids">
+                                    <span class="mapping-old-id">PED9AAC</span>
+                                    <span class="mapping-arrow"><i class="bi bi-arrow-right"></i></span>
+                                    <a class="mapping-new-id" routerLink="/entries/PED00024">PED00024</a>
+                                </div>
+                                <p class="mapping-desc">Structural ensemble of alpha-synuclein</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </div>

@@ -1,0 +1,48 @@
+@import 'variables';
+
+// ═══════════════════════════════════════════════════════════
+// FV SECTION - MODERN UI STYLING
+// ═══════════════════════════════════════════════════════════
+
+.fv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.chain-card {
+  background: white;
+  border: 1px solid rgba($primary, 0.1);
+  border-radius: 0.85rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba($primary, 0.1);
+  }
+}
+
+.chain-header {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba($primary, 0.06) 0%, rgba($primary-light, 0.02) 100%);
+  border-bottom: 1px solid rgba($primary, 0.1);
+}
+
+.chain-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+.chain-content {
+  padding: 1.25rem;
+}

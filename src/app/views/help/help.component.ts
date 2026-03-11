@@ -8,6 +8,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class HelpComponent implements OnInit {
 
+  public activeSection = 'overview';
+
   constructor(private titleService: Title) {
     this.titleService.setTitle("Help - PED");
   }
@@ -15,10 +17,17 @@ export class HelpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public scroll(el: HTMLElement) {
-    const y = el.getBoundingClientRect().top + window.scrollY - 75;
-    window.scrollTo({ top: y, behavior: "smooth" })
-    // el.scrollIntoView(true);
+  public scrollTo(sectionId: string, event?: Event): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    this.activeSection = sectionId;
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
 }

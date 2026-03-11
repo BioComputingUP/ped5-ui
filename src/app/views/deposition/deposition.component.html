@@ -1,48 +1,116 @@
 <div class="container-xl">
+    <!-- Page Header -->
+    <div class="deposition-header mb-4" #top>
+        <h1><i class="bi bi-cloud-upload-fill me-2"></i>Deposition</h1>
+        <p class="deposition-subtitle">Submit your structural ensembles to the Protein Ensemble Database</p>
+    </div>
+
+    <!-- CTA Button - Primary Action -->
+    <div class="cta-banner mb-5">
+        <div class="cta-banner-content">
+            <div class="cta-text">
+                <i class="bi bi-rocket-takeoff"></i>
+                <span>Ready to submit your structural ensemble?</span>
+            </div>
+            <a role="button" class="btn-cta" href="https://deposition.proteinensemble.org/">
+                Go to <strong>PED</strong><span class="fw-light">deposition</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+
     <div class="row">
+        <!-- Sidebar Navigation -->
         <div class="col-lg-3">
-            <div class="sticky-top" style="top: 90px;">
-                <h6>
-                    <p (click)="scroll(top)" style="cursor: pointer;">Deposition</p>
-                </h6>
-                <ul>
-                    <li (click)="scroll(intro)" style="cursor: pointer;">
-                        <p>What is <strong>PED</strong><span style="font-weight: lighter">deposition</span> service?</p>
-                    </li>
-                </ul>
+            <div class="sticky-top deposition-sidebar" style="top: 100px;">
+                <h6 class="sidebar-title"><i class="bi bi-list-nested me-2"></i>Navigation</h6>
+                <nav class="deposition-nav">
+                    <ul>
+                        <li class="nav-item-main">
+                            <a class="nav-link" [class.active]="activeSection === 'overview'" (click)="scroll(top, 'overview')">
+                                <i class="bi bi-house-door me-2"></i>Overview
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a class="nav-link" [class.active]="activeSection === 'intro'" (click)="scroll(intro, 'intro')">
+                                <i class="bi bi-question-circle me-2"></i>What is PED<span class="fw-light">deposition</span>?
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
+
+        <!-- Main Content -->
         <div class="col-lg-9">
-            <h1 #top>Deposition</h1>
-
-            <div class="row" #intro>
-                <div class="col">
-                    <h2 class="pt-3 pb-2">What is <strong>PED</strong><span
-                            style="font-weight: lighter">deposition</span> service?</h2>
-                    <p><strong>PED</strong><span style="font-weight: lighter">deposition</span> website is a tool that
-                        enables users to deposit the structural ensembles of
-                        proteins. Within the website you are able to define detailed descriptions about the experimental
-                        procedures and the computational methods used for the generation of conformational ensembles.
-                        Moreover, there is a possibility to cross-reference to other experimental and protein databases
-                        and add information about the expression organism.
-                    </p>
-                    <p>One of the major features of the <strong>PED</strong><span
-                            style="font-weight: lighter">deposition</span> tool is applying an automated pipeline to
-                        compute
-                        various characteristics of the ensembles such as, radius of gyration, secondary structural
-                        elements and relative solvent accessibility.
-                        Finally, after submitting an ensemble on the web server, our curators will be reviewing the
-                        information and the deposited entry will be published in the next release of Protein Ensemble
-                        Database (<strong>PED</strong>).
-                    </p>
+            <!-- Introduction Section -->
+            <section class="content-section" #intro>
+                <div class="section-header">
+                    <h2><i class="bi bi-info-circle me-2"></i>What is <strong>PED</strong><span class="fw-light">deposition</span> service?</h2>
                 </div>
-            </div>
-            <div class="row justify-content-center mt-2">
-                <div class="col-auto">
-                    <a role="button" class="btn btn-lg text-white" style="background-color: #326951;" href="https://deposition.proteinensemble.org/">Go to <strong>PED</strong><span style="font-weight: lighter">deposition</span><i class="bi bi-arrow-right ms-2"></i></a>
+                
+                <div class="info-card">
+                    <div class="info-card-body">
+                        <p><strong>PED</strong><span class="fw-light">deposition</span> website is a tool that
+                            enables users to deposit the structural ensembles of
+                            proteins. Within the website you are able to define detailed descriptions about the experimental
+                            procedures and the computational methods used for the generation of conformational ensembles.
+                            Moreover, there is a possibility to cross-reference to other experimental and protein databases
+                            and add information about the expression organism.
+                        </p>
+                        <p class="mb-0">One of the major features of the <strong>PED</strong><span
+                                class="fw-light">deposition</span> tool is applying an automated pipeline to
+                            compute
+                            various characteristics of the ensembles such as, radius of gyration, secondary structural
+                            elements and relative solvent accessibility.
+                            Finally, after submitting an ensemble on the web server, our curators will be reviewing the
+                            information and the deposited entry will be published in the next release of Protein Ensemble
+                            Database (<strong>PED</strong>).
+                        </p>
+                    </div>
                 </div>
-            </div>
 
+                <!-- Features Highlights -->
+                <div class="features-grid mt-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h5>Detailed Descriptions</h5>
+                            <p>Define experimental procedures and computational methods</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-link-45deg"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h5>Cross-References</h5>
+                            <p>Link to other experimental and protein databases</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-gear"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h5>Automated Pipeline</h5>
+                            <p>Compute ensemble characteristics automatically</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h5>Expert Curation</h5>
+                            <p>Reviewed by our team before publication</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
         </div>
     </div>
 </div>

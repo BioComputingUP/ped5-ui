@@ -1,9 +1,128 @@
 @import 'variables';
 
-.img-logo {
-  height: 1.5rem;
-}
-.footer-text {
-  max-width: 30rem;
-  line-height: 1;
+// ─── Footer ─────────────────────────────────────────────────
+.site-footer {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+
+  .footer-heading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba($primary-light, 0.3);
+    display: inline-block;
+  }
+
+  .footer-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $primary-light;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+  }
+
+  .footer-link {
+    color: $primary-light;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: lighten($primary-light, 15%);
+    }
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateX(3px);
+    }
+  }
+
+  .cite-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    padding: 0.85rem;
+  }
+
+  .cite-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 2rem;
+    font-size: 0.72rem;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: white;
+      transform: translateY(-1px);
+    }
+  }
+
+  .elixir-logo-link {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+      transform: scale(1.08);
+    }
+  }
+
+  .partner-logos {
+    .partner-logo-link {
+      display: inline-block;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+
+      img {
+        height: 1.8rem;
+        filter: brightness(0.9);
+        transition: filter 0.2s ease;
+      }
+
+      &:hover {
+        opacity: 0.85;
+        transform: scale(1.05);
+
+        img {
+          filter: brightness(1);
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1rem;
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.4);
+
+    a {
+      color: rgba($primary-light, 0.8);
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-light;
+      }
+    }
+  }
 }

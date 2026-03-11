@@ -1,0 +1,11 @@
+@import 'variables';
+
+// ═══════════════════════════════════════════════════════════
+// ENSEMBLES SECTION - MODERN UI STYLING
+// ═══════════════════════════════════════════════════════════
+
+.ensembles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

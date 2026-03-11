@@ -1,113 +1,195 @@
 <div id="browser" class="container-xl">
+    <!-- Page Header -->
+    <div class="browse-header mb-4" #top>
+        <h1><i class="bi bi-search me-2"></i>Browse Database</h1>
+        <p class="browse-subtitle">Search and explore protein ensemble entries in the PED database</p>
+    </div>
 
-    <!-- Search bar -->
-
-    <div class="row mb-3" [formGroup]="searchForm">
-        <div class="col">
-            <ng-container formArrayName="params">
-                <ng-container *ngFor="let searchField of searchParams.controls; first as isFirst; let idx = index;">
-                    <div class="input-group mb-2" [formGroupName]="idx">
-                        <span *ngIf="!isFirst" class="input-group-text border-primary bg-primary">and</span>
-                        <select class="form-select border-primary" formControlName="area">
+<!-- Search Section -->
+<div class="search-section mb-5" [formGroup]="searchForm">
+    <div class="search-card">
+        <div class="search-card-header">
+            <i class="bi bi-search me-2"></i> Search Filters
+        </div>
+        <div class="search-card-body">
+            <!-- Entry Type and Initial Search -->
+            <div class="search-row">
+                <div class="search-fields">
+                    <div class="field-group">
+                        <label class="field-label">Entry Type</label>
+                        <select class="form-select" formControlName="entryType" (change)="doSearch()">
+                            <option value="total">All Entries</option>
+                            <option value="predicted">Predicted</option>
+                            <option value="experimental">Experimental</option>
+                        </select>
+                    </div>
+                    <div class="field-group" *ngIf="searchParams.length > 0" [formGroup]="searchForm.get('params').controls[0]">
+                        <label class="field-label">Search Area</label>
+                        <select class="form-select" formControlName="area" (change)="onAreaChange(0)">
                             <option value="free_text">Free text</option>
                             <option value="term">Experimental tag</option>
                             <option value="cross_ref">Cross-reference (PDB, BMRB, SASBDB)</option>
                             <option value="entry_id">Entry identifier</option>
                             <option value="uniprot_acc">UniProt ACC</option>
                             <option value="protein_name">Protein name</option>
-                            <option value="publication_identifier">Publication id</option>
-                            <option value="publication_html">Publication title </option>
-                            <option value="data_owner">Data owner</option>
-                            <!-- <option value="curator_name">Biocurator name</option> -->
+                            <option value="publication_identifier">Publication ID</option>
+                            <option value="publication_html">Publication Title</option>
+                            <option value="data_owner">Data Owner</option>
                         </select>
-                        <input type="text" class="form-control w-50 border-primary" placeholder="e.g.: p53"
-                            formControlName="key">
-                        <button type="button" class="btn btn-success" (click)="addSearchField('term')">Add</button>
-                        <button type="button" class="btn btn-danger" (click)="removeSearchField(idx)">Remove</button>
+                    </div>
+                    <div class="field-group field-group-grow" *ngIf="searchParams.length > 0" [formGroup]="searchForm.get('params').controls[0]">
+                        <label class="field-label">Keyword Search</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                placeholder="Search by keyword, entry ID, UniProt ACC..."
+                                formControlName="key" (keyup.enter)="doSearch()">
+                        </div>
+                    </div>                </div>
+            </div>
+
+            <!-- Dynamic Advanced Filters -->
+            <ng-container formArrayName="params">
+                <ng-container *ngFor="let searchField of searchParams.controls; let i = index">
+                    <div class="search-row" [formGroupName]="i" *ngIf="i > 0">
+                        <span class="search-connector">AND</span>
+                        <div class="search-fields">
+                            <div class="field-group">
+                                <label class="field-label">Search Area</label>
+                                <select class="form-select" formControlName="area" (change)="onAreaChange(i)">
+                                    <option value="free_text">Free text</option>
+                                    <option value="term">Experimental tag</option>
+                                    <option value="cross_ref">Cross-reference (PDB, BMRB, SASBDB)</option>
+                                    <option value="entry_id">Entry identifier</option>
+                                    <option value="uniprot_acc">UniProt ACC</option>
+                                    <option value="protein_name">Protein name</option>
+                                    <option value="publication_identifier">Publication ID</option>
+                                    <option value="publication_html">Publication Title</option>
+                                    <option value="data_owner">Data Owner</option>
+                                </select>
+                            </div>
+                            <div class="field-group field-group-grow">
+                                <label class="field-label">Search Term</label>
+                                <div class="input-with-actions">
+                                    <input type="text" class="form-control" formControlName="key"
+                                        (keyup.enter)="doSearch()">
+                                    <div class="field-actions">
+                                        <button type="button" class="btn-action btn-remove"
+                                            (click)="removeSearchField(i)" title="Remove filter">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </ng-container>
             </ng-container>
-        </div>
-        <div class="col-auto">
-            <button type="button" class="btn btn-primary" (click)="doSearch()"><i class="bi bi-search"></i> Search</button>
+
+            <!-- Action Buttons -->
+            <div class="search-actions">
+                <button type="button" class="btn btn-outline-primary" (click)="addSearchField('term')">
+                    <i class="bi bi-plus-lg me-1"></i> Add Filter
+                </button>
+                <button type="button" class="btn btn-primary" (click)="doSearch()">
+                    <i class="bi bi-search me-2"></i>Search
+                </button>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Content -->
-    <div class="row mb-2">
-        <div class="table-responsive">
-            <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">PED identifier</th>
-                    <th scope="col">Deposition title</th>
-                    <th scope="col">Experimental tags</th>
-                    <th scope="col">Number of ensembles</th>
-                    <th scope="col">Number of conformers</th>
-                    <th scope="col">UniProt ACC</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let entryData of resultData">
-                    <td>
-                        <a class="badge bg-primary" href="/entries/{{entryData['entry_id']}}/">
-                            {{entryData["entry_id"]}}<i class="bi bi-link-45deg"></i>
-                        </a>
-                    </td>
-                    <td>
-                        {{entryData['description']['title']}}
-                    </td>
-
-                    <td>
-                        <a *ngFor="let term of entryData['description']['ontology_terms']" class="badge me-1"
-                            style="cursor: pointer;"
-                            [ngClass]="{'bg-experiment': term['namespace'] === 'Measurement method', 'bg-ensemble': term['namespace'] === 'Ensemble generation method', 'bg-md': term['namespace'] === 'Molecular dynamics'}"
-                            (click)="addSearchField('term', term['name'])">
-                            {{term['name']}}<i class="bi bi-search ms-1"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        {{getEnsNum(entryData['ensembles'])}}
-                    </td>
-                    <td class="text-center">
-                        {{getEnsConformers(entryData['ensembles'])}}
-                    </td>
-
-                    <td class="text-center">
-                        <ng-container *ngFor="let proteinName of getProteinACCs(entryData['construct_chains'])">
-                            <a class="badge bg-primary" href="/proteins/uniprot/{{proteinName}}/">
-                                {{proteinName}}<i class="bi bi-link-45deg"></i>
-                            </a>
-                        </ng-container>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<!-- Active Filters Pills -->
+<div class="active-filters-section mb-4" *ngIf="getActiveFilters().length > 0">
+    <span class="filters-label">Active Filters:</span>
+    <div class="filters-pills">
+        <div class="filter-pill" *ngFor="let filter of getActiveFilters(); let i = index">
+            <span>{{ filter.area }}: <strong>{{ filter.key }}</strong></span>
+            <button class="btn-remove-pill" (click)="removeSearchField(i + 1)">&times;</button>
         </div>
     </div>
+</div>
 
-    <!-- Pagination -->
-    <div class="row mb-2">
-        <div class="col">
-            <pagination [totalItems]="itemsCount" [itemsPerPage]="itemsPerPage" [(ngModel)]="curPageNum"
-                (pageChanged)="pageChanged($event)" [boundaryLinks]="true" [maxSize]="10" class="my-pagination"></pagination>
+<!-- Results Header -->
+<div class="results-header mb-4">
+    <div class="results-count">
+        <i class="bi bi-database me-2"></i>
+        <span><strong>{{itemsCount}}</strong> entries found</span>
+    </div>
+    <div class="results-view-options">
+    <span class="view-label">Show:</span>
+    <button class="btn-limit" [class.active]="itemsPerPage === 10" (click)="changeLimit(10)">10</button>
+    <button class="btn-limit" [class.active]="itemsPerPage === 20" (click)="changeLimit(20)">20</button>
+    <button class="btn-limit" [class.active]="itemsPerPage === 50" (click)="changeLimit(50)">50</button>
+</div>
+<div class="results-view-mode">
+    <button class="btn-view" [class.active]="viewMode === 'card'" (click)="changeViewMode('card')">
+        <i class="bi bi-grid-3x3-gap-fill"></i> Card View
+    </button>
+    <button class="btn-view" [class.active]="viewMode === 'table'" (click)="changeViewMode('table')">
+        <i class="bi bi-table"></i> Table View
+    </button>
+</div>
+</div>
+
+<!-- Results Grid (Cards) / Table -->
+<div [ngSwitch]="viewMode">
+<!-- Card View -->
+<div *ngSwitchCase="'card'" class="results-grid">
+    <div class="entry-card" *ngFor="let entryData of resultData">
+        <div class="entry-card-header">
+            <a [class]="'entry-badge ' + (isPredicted(entryData) ? 'predicted' : 'experimental')"
+                href="/entries/{{entryData['entry_id']}}/">
+                <i class="bi bi-box-seam me-1"></i>{{entryData["entry_id"]}}
+            </a>
+            <div class="entry-type-indicator" [class.predicted]="isPredicted(entryData)">
+                {{isPredicted(entryData) ? 'Predicted' : 'Experimental'}}
+            </div>
         </div>
-        <div class="col-auto mx-2">
-            Selected items <span class="badge bg-primary">{{itemsCount}}</span>
+        <div class="entry-card-body" *ngIf="entryData.description">
+            <h5 class="entry-title">{{entryData['description']['title']}}</h5>
+            <div class="entry-tags">
+                <a *ngFor="let term of entryData['description']['ontology_terms']" class="tag-badge"
+                    [ngClass]="{'tag-experiment': term['namespace'] === 'Measurement method', 
+                               'tag-ensemble': term['namespace'] === 'Ensemble generation method', 
+                               'tag-md': term['namespace'] === 'Molecular dynamics'}"
+                    (click)="addSearchField('term', term['name'])">
+                    {{term['name']}}<i class="bi bi-search ms-1"></i>
+                </a>
+            </div>
         </div>
-        <div class="col-auto">
-            <p>Show
-                <span class="badge ms-2" style="cursor: pointer;"
-                    [ngClass]="{'bg-primary': itemsPerPage === 10, 'bg-secondary': itemsPerPage !== 10}"
-                    (click)="changeLimit(10)" >10</span>
-                <span class="badge ms-2" style="cursor: pointer;"
-                    [ngClass]="{'bg-primary': itemsPerPage === 20, 'bg-secondary': itemsPerPage !== 20}"
-                    (click)="changeLimit(20)">20</span>
-                <span class="badge ms-2" style="cursor: pointer;"
-                    [ngClass]="{'bg-primary': itemsPerPage === 50, 'bg-secondary': itemsPerPage !== 50}"
-                    (click)="changeLimit(50)">50</span>
-            </p>
+        <div class="entry-card-footer">
+            <div class="entry-stats">
+                <div class="stat-item">
+                    <i class="bi bi-layers"></i>
+                    <span class="stat-value">{{getEnsNum(entryData['ensembles'])}}</span>
+                    <span class="stat-label">Ensembles</span>
+                </div>
+                <div class="stat-item">
+                    <i class="bi bi-diagram-3"></i>
+                    <span class="stat-value">{{getEnsConformers(entryData['ensembles'])}}</span>
+                    <span class="stat-label">Conformers</span>
+                </div>
+            </div>
+            <div class="entry-proteins">
+                <ng-container *ngFor="let proteinName of getProteinACCs(entryData['construct_chains'])">
+                    <a class="protein-badge" href="/proteins/uniprot/{{proteinName}}/">
+                        <i class="bi bi-link-45deg"></i>{{proteinName}}
+                    </a>
+                </ng-container>
+            </div>
         </div>
     </div>
+</div>
 
+<!-- Table View -->
+<div *ngSwitchCase="'table'">
+    <app-entry-table-view [entries]="resultData" [sortField]="sortField" [sortOrder]="sortOrder" (sort)="sort($event)"></app-entry-table-view>
+</div>
+</div>
+
+<!-- Pagination -->
+<div class="pagination-section mt-4">
+    <pagination [totalItems]="itemsCount" [itemsPerPage]="itemsPerPage" [(ngModel)]="curPageNum"
+        (pageChanged)="pageChanged($event)" [boundaryLinks]="true" [maxSize]="10" class="my-pagination">
+    </pagination>
 </div>

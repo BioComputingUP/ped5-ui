@@ -1,55 +1,74 @@
-<div class="container-xl">
-
-    <h1 id="uniprot-summary" class="mb-3">
-        <span *ngIf="uniprotACC" class="badge bg-primary me-2">
-            {{uniprotACC}}
-        </span>
-        <ng-container *ngIf="proteinData">{{proteinData['name']}}</ng-container>
+<div class="container-xl" id="protein-view" #top>
+  <!-- Header Section -->
+  <div class="protein-header mb-5" *ngIf="proteinData">
+    <h1>
+      <i class="bi bi-droplet me-2"></i>Protein Details
     </h1>
-    <ng-container *ngIf="proteinData">
-        <div class="row mb-2">
-            <div class="col">
-                <span>
-                    <strong>Organism: </strong>{{proteinData['organism_name']}}
-                    <strong class="ms-2">NCBI taxon ID: </strong>
-                    <a class="badge bg-dark"
-                        href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{proteinData['organism_taxon']}}">
-                        {{proteinData['organism_taxon']}} <i class="bi bi-box-arrow-up-right"></i>
-                    </a>
-                </span>
-            </div>
-        </div>
-        <div class="row mb-2" *ngIf="proteinData['function'] && proteinData['function'].length > 0">
-            <div class="col text-justify">
-                <span>
-                    <strong>Function: </strong>{{proteinData['function']}}
-                    <a href="https://uniprot.org/uniprot/{{uniprotACC}}"><i class="bi bi-box-arrow-up-right"></i></a>
-                </span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col">
-                <span>
-                    <strong>Cross reference: </strong>
-                </span>
-                <a class="badge bg-dark mx-1"
-                    *ngIf="disprotGeneralData && disprotGeneralData.hasOwnProperty('disprot_id')"
-                    href="https://disprot.org/{{disprotGeneralData['disprot_id']}}">DisProt:{{disprotGeneralData['disprot_id']}}
-                    <i class="bi bi-box-arrow-up-right"></i></a>
-                <a class="badge bg-dark mx-1" href="https://uniprot.org/uniprot/{{uniprotACC}}">UniProt:{{uniprotACC}}
-                    <i class="bi bi-box-arrow-up-right"></i></a>
-                <a class="badge bg-dark mx-1" href="https://mobidb.org/{{uniprotACC}}">MobiDB:{{uniprotACC}}
-                    <i class="bi bi-box-arrow-up-right"></i></a>
-            </div>
-        </div>
-    </ng-container>
+    <p class="protein-subtitle">Detailed information about UniProt protein {{uniprotACC}}</p>
+  </div>
 
-    <div id="protein-entries">
-        <div class="row mt-4" *ngFor="let entryData of entriesData;">
-            <app-protein-card [entryData]="entryData" [selectedProtein]="uniprotACC"></app-protein-card>
+  <div class="row" *ngIf="proteinData">
+    <!-- Sidebar Navigation -->
+    <div class="col-lg-3">
+      <div class="protein-sidebar sticky-top" style="top: 100px;">
+        <h6 class="sidebar-title"><i class="bi bi-list-nested me-2"></i>Quick Navigation</h6>
+        <nav class="protein-nav">
+          <ul>
+            <li class="nav-item-main">
+              <a class="nav-link" [class.active]="activeSection === 'summary'" (click)="scroll(summarySection, 'summary')">
+                <i class="bi bi-file-text me-2"></i>Summary
+              </a>
+            </li>
+            <li class="nav-item-main">
+              <a class="nav-link" [class.active]="activeSection === 'entries'" (click)="scroll(entriesSection, 'entries')">
+                <i class="bi bi-layers me-2"></i>PED Entries
+              </a>
+            </li>
+            <li class="nav-item-main">
+              <a class="nav-link" href="/about">
+                <i class="bi bi-info-circle me-2"></i>About PED
+              </a>
+            </li>
+            <li class="nav-item-main">
+              <a class="nav-link" href="/help">
+                <i class="bi bi-question-circle me-2"></i>Help
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Quick Actions -->
+        <div class="protein-quick-actions">
+          <h6 class="sidebar-title mt-4"><i class="bi bi-lightning-charge me-2"></i>Quick Actions</h6>
+          <a class="action-btn" [href]="'https://uniprot.org/uniprot/' + uniprotACC" target="_blank">
+            <i class="bi bi-box-arrow-up-right me-2"></i>View on UniProt
+          </a>
         </div>
-        <div *ngIf="entriesData.length <= 0 && !entriesLoading" class="row mt-4 pt-4 mb-2 justify-content-center fw-bold" style="color:gray" >
-            No entries found
-        </div>
+      </div>
     </div>
+
+    <!-- Main Content -->
+    <div class="col-lg-9">
+      <!-- Summary Section -->
+      <section id="summary" #summarySection>
+        <app-uniprot-summary [proteinData]="proteinData" [uniprotACC]="uniprotACC" [disprotGeneralData]="disprotGeneralData"></app-uniprot-summary>
+      </section>
+
+      <!-- PED Entries Section -->
+      <section id="entries" #entriesSection class="protein-section">
+        <div class="section-header">
+          <div class="section-title-row">
+            <h2><i class="bi bi-layers me-2"></i>PED Entries</h2>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="row" *ngFor="let entryData of entriesData; let i = index">
+            <app-protein-card [entryData]="entryData" [selectedProtein]="uniprotACC"></app-protein-card>
+          </div>
+          <div *ngIf="entriesData.length <= 0 && !entriesLoading" class="row mt-4 pt-4 mb-2 justify-content-center fw-bold text-muted">
+            No entries found
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>

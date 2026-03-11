@@ -1,36 +1,95 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-dark bg-nav navbar-expand-lg fixed-top" id="navbar">
-    <div class="container-xl">
-      <!-- <a class="navbar-brand" style="color: #ffffffcc; line-height:18px" routerLink="/">
-        <strong style="color: #ffffffee">P</strong><span style="font-weight: lighter">rotein</span><br><strong
-          style="color: #ffffffee">E</strong><span style="font-weight: lighter">nsemble</span><br><strong
-          style="color: #ffffffee">D</strong><span style="font-weight: lighter">atabase</span>
-      </a> -->
-      <a routerLink="">
-        <img id="ped_logo_nav" class="img-fluid" src="assets/logos/PED_logo_white.svg">
-      </a>
-      <button class="navbar-toggler" type="button" (click)="closeMenu()" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText" (click)="closeMenu()">
-        <ul class="navbar-nav ">
-          <li class="nav-item">
-            <a class="nav-link" [class.active]="router.url.slice(0,7) === '/browse'" routerLink="/browse">Browse</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [class.active]="router.url === '/help'" routerLink="/help">Help</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [class.active]="router.url === '/about'" routerLink="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [class.active]="router.url === '/deposition'" routerLink="/deposition">Deposition</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [class.active]="router.url === '/api'" routerLink="/api">API</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand-lg sticky-top" id="navbar">
+  <div class="container-xl">
+    <!-- Logo & Brand -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img id="ped_logo_nav" src="assets/logos/PED_logo_white.svg" alt="PED Logo">
+      <div class="brand-text d-none d-sm-block">
+        <span class="brand-name">PED</span>
+        <span class="brand-tagline">Protein Ensemble Database</span>
+      </div>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Toggle navigation">
+      <span class="toggler-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" [class.show]="isMenuOpen" id="navbarText">
+      <!-- Desktop Navigation -->
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="router.url === '/' || router.url === ''" routerLink="/" (click)="closeMenu()">
+            <i class="bi bi-house-door"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="router.url.startsWith('/browse') || router.url.startsWith('/entries') || router.url.startsWith('/proteins')" routerLink="/browse" (click)="closeMenu()">
+            <i class="bi bi-collection"></i>
+            <span>Browse</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="router.url === '/deposition'" routerLink="/deposition" (click)="closeMenu()">
+            <i class="bi bi-cloud-upload"></i>
+            <span>Deposit</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="router.url === '/api'" routerLink="/api" (click)="closeMenu()">
+            <i class="bi bi-braces"></i>
+            <span>API</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="router.url === '/help'" routerLink="/help" (click)="closeMenu()">
+            <i class="bi bi-question-circle"></i>
+            <span>Help</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="router.url === '/about'" routerLink="/about" (click)="closeMenu()">
+            <i class="bi bi-info-circle"></i>
+            <span>About</span>
+          </a>
+        </li>
+        
+        <!-- CTA Button -->
+        <li class="nav-item nav-cta d-none d-lg-block">
+          <a class="btn-nav-cta" href="https://deposition.proteinensemble.org/" target="_blank">
+            <i class="bi bi-box-arrow-up-right me-1"></i>
+            Submit Data
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile Footer Info -->
+      <div class="mobile-nav-footer d-lg-none">
+        <div class="mobile-cta">
+          <a class="btn-mobile-cta" href="https://deposition.proteinensemble.org/" target="_blank">
+            <i class="bi bi-rocket-takeoff me-2"></i>
+            Go to PED<span class="fw-light">deposition</span>
+          </a>
+        </div>
+        <div class="mobile-info">
+          <a href="https://twitter.com/proteinensemble" class="social-link" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+            </svg>
+            @proteinEnsemble
+          </a>
+          <span class="divider">•</span>
+          <span class="elixir-badge">
+            <img src="assets/logos/ELIXIR_logo.svg" alt="ELIXIR" class="elixir-icon">
+            ELIXIR Resource
+          </span>
+        </div>
       </div>
     </div>
-  </nav>
-</div>
+  </div>
+</nav>

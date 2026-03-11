@@ -1,0 +1,58 @@
+<div class="table-responsive">
+  <table class="table table-hover entry-table">
+    <thead>
+      <tr>
+        <th (click)="onSort('entry_id')" class="sortable">
+          Entry ID
+          <i class="bi" [ngClass]="{'bi-arrow-up': sortField === 'entry_id' && sortOrder === 'asc', 'bi-arrow-down': sortField === 'entry_id' && sortOrder === 'desc'}"></i>
+        </th>
+        <th (click)="onSort('title')" class="sortable">
+          Title
+          <i class="bi" [ngClass]="{'bi-arrow-up': sortField === 'title' && sortOrder === 'asc', 'bi-arrow-down': sortField === 'title' && sortOrder === 'desc'}"></i>
+        </th>
+        <th>Tags</th>
+        <th (click)="onSort('ensembles')" class="sortable">
+          Ensembles
+          <i class="bi" [ngClass]="{'bi-arrow-up': sortField === 'ensembles' && sortOrder === 'asc', 'bi-arrow-down': sortField === 'ensembles' && sortOrder === 'desc'}"></i>
+        </th>
+        <th (click)="onSort('conformers')" class="sortable">
+          Conformers
+          <i class="bi" [ngClass]="{'bi-arrow-up': sortField === 'conformers' && sortOrder === 'asc', 'bi-arrow-down': sortField === 'conformers' && sortOrder === 'desc'}"></i>
+        </th>
+        <th>Proteins</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entryData of entries" [title]="entryData.description?.ensembles_type">
+        <td>
+          <a [class]="'entry-badge ' + (isPredicted(entryData) ? 'predicted' : 'experimental')"
+             href="/entries/{{entryData['entry_id']}}/">
+            <i class="bi bi-box-seam me-1"></i>{{entryData["entry_id"]}}
+          </a>
+        </td>
+        <td>{{entryData['description']['title']}}</td>
+        <td>
+          <div class="entry-tags">
+            <a *ngFor="let term of entryData['description']['ontology_terms']" class="tag-badge"
+               [ngClass]="{'tag-experiment': term['namespace'] === 'Measurement method', 
+                           'tag-ensemble': term['namespace'] === 'Ensemble generation method', 
+                           'tag-md': term['namespace'] === 'Molecular dynamics'}">
+              {{term['name']}}<i class="bi bi-search ms-1"></i>
+            </a>
+          </div>
+        </td>
+        <td>{{getEnsNum(entryData['ensembles'])}}</td>
+        <td>{{getEnsConformers(entryData['ensembles'])}}</td>
+        <td>
+          <div class="entry-proteins">
+            <ng-container *ngFor="let proteinName of getProteinACCs(entryData['construct_chains'])">
+              <a class="protein-badge" href="/proteins/uniprot/{{proteinName}}/">
+                <i class="bi bi-link-45deg"></i>{{proteinName}}
+              </a>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

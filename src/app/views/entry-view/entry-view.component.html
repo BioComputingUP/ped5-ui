@@ -1,22 +1,90 @@
-<div class="container-xl" id="result-view">
-    <app-entry-description *ngIf="entryData && entryData['description']" [entryId]="entryData['entry_id']"
-        [descriptionObj]="entryData['description']">
-    </app-entry-description>
-    <div class="mb-4"></div>
-    <!-- <app-entry-tab-section [entryData]="entryData"></app-entry-tab-section> -->
-    <app-entry-fv-section *ngIf="entryData" [entryData]="entryData"></app-entry-fv-section>
+<div class="container-xl" id="result-view" #top>
+    <!-- Header Section -->
+    <div class="entry-page-header mb-5" *ngIf="entryData">
+        <h1>
+            <i class="bi bi-box-seam me-2"></i>Entry Details
+        </h1>
+        <p class="entry-page-subtitle">Detailed information about protein ensemble entry {{entryData['entry_id']}}</p>
+    </div>
 
-    <div *ngIf="entryData" class="row align-items-center mt-4">
-        <div class="col">
-            <h4>Ensembles</h4>
+    <div class="row" *ngIf="entryData">
+        <!-- Sidebar Navigation -->
+        <div class="col-lg-3">
+            <div class="sticky-top entry-sidebar" style="top: 100px;">
+                <h6 class="sidebar-title"><i class="bi bi-list-nested me-2"></i>Quick Navigation</h6>
+                <nav class="entry-nav">
+                    <ul>
+                        <li class="nav-item-main">
+                            <a class="nav-link" [class.active]="activeSection === 'overview'" (click)="scroll(top, 'overview')">
+                                <i class="bi bi-house-door me-2"></i>Overview
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a class="nav-link" [class.active]="activeSection === 'description'" (click)="scroll(descSection, 'description')">
+                                <i class="bi bi-file-text me-2"></i>Entry Description
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a class="nav-link" [class.active]="activeSection === 'features'" (click)="scroll(fvSection, 'features')">
+                                <i class="bi bi-bar-chart-steps me-2"></i>Sequence & Features
+                            </a>
+                        </li>
+                        <li class="nav-item-main">
+                            <a class="nav-link" [class.active]="activeSection === 'ensembles'" (click)="scroll(ensSection, 'ensembles')">
+                                <i class="bi bi-layers me-2"></i>Ensembles
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h6 class="sidebar-title mt-4"><i class="bi bi-lightning-charge me-2"></i>Quick Actions</h6>
+                    <ng-container *ngFor="let proteinName of getProteinACCs(entryData['construct_chains'])">
+                      <a class="action-btn protein-btn" href="/proteins/uniprot/{{proteinName}}/">
+                        <i class="bi bi-box-arrow-up-right me-2"></i>Go to {{proteinName}}
+                      </a>
+                    </ng-container>
+                    <a class="action-btn" href="{{downloadAllLink}}">
+                        <i class="bi bi-download me-2"></i>Download All
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="col-auto">
-            <a role="button" class="btn btn-sm btn-success" href="{{downloadAllLink}}"><i
-                    class="bi bi-download"></i> Download All Ensembles</a>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+            <!-- Entry Description Section -->
+            <section #descSection>
+                <app-entry-description *ngIf="entryData && entryData['description']" [entryId]="entryData['entry_id']"
+                    [descriptionObj]="entryData['description']">
+                </app-entry-description>
+            </section>
+
+            <!-- Feature Viewer Section -->
+            <section class="entry-section" #fvSection>
+                <div class="section-header">
+                    <h2><i class="bi bi-bar-chart-steps me-2"></i>Sequence & Features</h2>
+                </div>
+                <div class="section-content">
+                    <app-entry-fv-section [entryData]="entryData"></app-entry-fv-section>
+                </div>
+            </section>
+
+            <!-- Ensembles Section -->
+            <section class="entry-section" #ensSection>
+                <div class="section-header">
+                    <div class="section-title-row">
+                        <h2><i class="bi bi-layers me-2"></i>Ensembles</h2>
+                        <a role="button" class="btn-download" href="{{downloadAllLink}}">
+                            <i class="bi bi-download me-2"></i>Download All Ensembles
+                        </a>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <app-entry-ensembles-section [entryData]="entryData"></app-entry-ensembles-section>
+                </div>
+            </section>
         </div>
     </div>
-    <div *ngIf="entryData" class="mt-2">
-        <hr>
-    </div>
-    <app-entry-ensembles-section [entryData]="entryData"></app-entry-ensembles-section>
 </div>

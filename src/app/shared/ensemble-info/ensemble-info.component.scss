@@ -1,0 +1,299 @@
+@import 'variables';
+
+// ═══════════════════════════════════════════════════════════
+// ENSEMBLE INFO - CLEAN MODERN UI
+// ═══════════════════════════════════════════════════════════
+
+// ─── Modal Styling ──────────────────────────────────────────
+.modal-modern {
+  border-radius: 0.75rem;
+  overflow: hidden;
+
+  .modal-header {
+    background: $primary;
+    color: white;
+    border: none;
+    padding: 1rem 1.25rem;
+
+    .modal-title {
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-close {
+      filter: brightness(0) invert(1);
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+  }
+}
+
+// ─── Ensemble Card ──────────────────────────────────────────
+.ensemble-card {
+  background: transparent;
+  border: none;
+  overflow: visible;
+  padding-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+// ─── Ensemble Header ────────────────────────────────────────
+.ensemble-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ensemble-info-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ensemble-id-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  background: $primary;
+  color: white;
+  border-radius: 0.35rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.ensemble-models {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: $text-secondary;
+  font-size: 0.875rem;
+
+  .models-count {
+    font-weight: 700;
+    color: $primary-dark;
+  }
+
+  .models-label {
+    color: $text-muted;
+  }
+}
+
+.warning-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.4rem;
+  background: rgba(#f39c12, 0.12);
+  color: #d68910;
+  border-radius: 0.25rem;
+  margin-left: 0.35rem;
+  cursor: help;
+
+  i {
+    font-size: 0.8rem;
+  }
+}
+
+.chain-selector {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.chain-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  background: rgba($primary, 0.08);
+  color: $primary-dark;
+  border-radius: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: rgba($primary, 0.15);
+  }
+
+  &.active {
+    background: $primary;
+    color: white;
+  }
+}
+
+.btn-download-assets {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  background: $primary;
+  color: white;
+  border: none;
+  border-radius: 0.35rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+// ─── Stats Row ──────────────────────────────────────────────
+.ensemble-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.stat-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($primary, 0.08);
+  border-radius: 0.35rem;
+  flex-shrink: 0;
+
+  i {
+    font-size: 0.9rem;
+    color: $primary;
+  }
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+
+  .stat-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $primary-dark;
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: $text-muted;
+  }
+}
+
+// ─── Visualizations ─────────────────────────────────────────
+.ensemble-visualizations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.viz-card {
+  flex: 1;
+  min-width: 260px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.viz-header {
+  padding: 0.65rem 0.85rem;
+  background: rgba($primary, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: $primary-dark;
+  display: flex;
+  align-items: center;
+
+  i {
+    color: $primary;
+    font-size: 0.85rem;
+  }
+}
+
+.viz-content {
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.molstar-viewer {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 0.35rem;
+}
+
+.viz-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0.35rem;
+}
+
+// ─── Responsive ─────────────────────────────────────────────
+@media (max-width: 991.98px) {
+  .ensemble-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-download-assets {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .ensemble-stats {
+    flex-direction: column;
+  }
+  
+  .stat-card {
+    min-width: 100%;
+  }
+  
+  .viz-card {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .ensemble-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

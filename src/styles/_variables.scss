@@ -7,26 +7,29 @@
 //$primary-middle: $primary;
 //$primary-dark: #003C40;
 
-$primary-light: #78bce3;
-$primary: #2274a5;
+$primary-light: #5BA3D0;
+$primary: #1B5E8F;
 $primary-middle: $primary;
-$primary-dark: #185477;
+$primary-dark: #0D3B54;
+$primary-extra-dark: #092A3D;
 
 // Previous color palette https://coolors.co/4c243b-67516d-817e9f-f8f9f7-899d78-466d5c-023c40
 
+// Enhanced text colors for better contrast
+$text-primary: #1a1a1a;
+$text-secondary: #424242;
+$text-muted: #757575;
 
-
-
-//$primary: #00557C;
-//$primary-light:#55A630;
-// $primary: #BF2315;
-//$primary-light:#D96704;
-$success: #2F8348;
-$danger: #b2252e;
+$success: #2E7D32;
+$danger: #C62828;
 //#CF2A2D;
 //$info: #2274a5;
 $info: $primary-middle;
 $gray-bs: #6c757d;
+
+$light-gray: #e9ecef; // bootstrap gray-200
+$ped-predicted: #ffc107; // yellow
+$ped-experimental: #0d6efd; // blue
 
 //$dark: shade-color($primary, 60);
 

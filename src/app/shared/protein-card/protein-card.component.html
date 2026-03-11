@@ -1,22 +1,22 @@
 <div class="card py-3 px-4">
     <div class="row mb-3 align-items-center">
-        <a class="col-auto badge bg-primary me-2" href="/entries/{{entryData['entry_id']}}/">
+        <a class="col-auto entry-badge experimental me-2" href="/entries/{{entryData['entry_id']}}/">
             {{entryData["entry_id"]}} <i class="bi bi-link-45deg"></i>
         </a>
-        <strong class="col">{{entryData["description"]["title"]}}</strong>
+        <h5 class="col protein-card-title">{{entryData["description"]["title"]}}</h5>
     </div>
     <div class="row">
         <p>
-            <strong class="col-auto">Coverage (to UniProt): </strong><ng-container
+            <span class="card-label col-auto">Coverage (to UniProt): </span><ng-container
                 *ngFor="let covData of coverages | keyvalue;"><strong> {{"Chain " + covData.key}}</strong><ng-container
                     *ngFor="let cavVal of covData.value; last as isLast;"> {{cavVal | number:'1.2-3'}}<ng-container *ngIf="!isLast"> |</ng-container> </ng-container></ng-container>
 
         </p>
     </div>
     <div class="row mb-2 align-items-center">
-        <strong class="col-auto">Terms: </strong>
-        <a *ngFor="let term of entryData['description']['ontology_terms']" class="col-auto badge me-1"
-            [ngClass]="{'bg-experiment': term['namespace'] === 'Measurement method', 'bg-ensemble': term['namespace'] === 'Ensemble generation method', 'bg-md': term['namespace'] === 'Molecular dynamics'}">
+        <span class="card-label col-auto">Terms: </span>
+        <a *ngFor="let term of entryData['description']['ontology_terms']" class="col-auto me-1 tag-badge"
+            [ngClass]="{'tag-experiment': term['namespace'] === 'Measurement method', 'tag-ensemble': term['namespace'] === 'Ensemble generation method', 'tag-md': term['namespace'] === 'Molecular dynamics'}">
             {{term['name']}}
         </a>
     </div>
