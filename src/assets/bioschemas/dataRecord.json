@@ -3,7 +3,7 @@
     "https://schema.org/",
     {
       "dc": "http://purl.org/dc/terms/",
-      "ped": "https://proteinensemble.org/entries/",
+      "ped": "https://old.proteinensemble.org/entries/",
       "idpregistry": "https://idpregistry.org/"
     }
   ],

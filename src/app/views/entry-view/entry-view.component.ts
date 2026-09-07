@@ -44,7 +44,7 @@ export class EntryViewComponent implements OnInit {
       listTerms = listTerms.concat(entryObj.description.ontology_terms.map(term => {
         return {
           '@type' : 'PropertyValue',
-          '@id' : 'https://proteinensemble.org/#IDPO:' + term.id,
+          '@id' : 'https://old.proteinensemble.org/#IDPO:' + term.id,
           name : term.name,
           value : term.name,
           valueReference : {

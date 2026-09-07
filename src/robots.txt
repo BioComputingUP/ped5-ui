@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://proteinensemble.org/sitemap.xml
+Sitemap: https://old.proteinensemble.org/sitemap.xml
